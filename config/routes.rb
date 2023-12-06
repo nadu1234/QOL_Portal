@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :relationships, only:[:create, :destroy]
     get 'searches/search' => "#search"
   end
+  
   get 'admin',to:'admin/homes#top'
   namespace :admin do
     resources :categories, only:[:index, :create, :edit, :update, :destroy]
