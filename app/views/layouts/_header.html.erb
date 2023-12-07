@@ -1,0 +1,61 @@
+<header style="background-image: linear-gradient(135deg, rgba(255,255,255, 0.91) 0%, rgba(255,255,255, 0.91) 23%,rgba(251,254,253, 0.74) 23%, rgba(251,254,253, 0.74) 65%,rgba(165,235,255, 0.61) 65%, rgba(165,235,255, 0.61) 70%,rgba(9,129,146, 0.16) 70%, rgba(9,129,146, 0.16) 74%,rgba(64,244,255, 0.47) 74%, rgba(64,244,255, 0.47) 90%,rgba(122,255,254, 0.8) 90%, rgba(122,255,254, 0.8) 100%),linear-gradient(45deg, rgba(255,255,255, 0.31) 0%, rgba(255,255,255, 0.31) 28%,rgba(255,255,255, 0.91) 28%, rgba(255,255,255, 0.91) 55%,rgba(184,214,250, 0.77) 55%, rgba(184,214,250, 0.77) 66%,rgba(179,255,251, 0.37) 66%, rgba(179,255,251, 0.37) 80%,rgba(72,224,255, 0.32) 80%, rgba(72,224,255, 0.32) 85%,rgba(12,159,246, 0.19) 85%, rgba(12,159,246, 0.19) 100%),linear-gradient(90deg, rgb(248,251,254) 0%, rgb(248,251,254) 6%,rgb(201,234,250) 6%, rgb(201,234,250) 32%,rgb(116,193,255) 32%, rgb(116,193,255) 40%,rgba(109,178,255, 0.78) 40%, rgba(109,178,255, 0.78) 66%,rgb(178,200,250) 66%, rgb(178,200,250) 72%,rgb(178,248,254) 72%, rgb(178,248,254) 86%,rgb(118,255,242) 86%, rgb(118,255,242) 96%,rgba(56,226,255, 0.55) 96%, rgba(56,226,255, 0.55) 100%);" >
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-md-2">
+        <!--<a class="navbar-brand" href="/">< %= image_tag 'naganocake_logo2.png', size: '150x100' %></a>-->
+      </div>
+      <div class="col-md-4 d-flex justify-content-end">
+        <% if user_signed_in? %>
+          <div>ようこそ、<%= current_user.name %>さん</div>
+        <% end %>
+      </div>
+      
+      <div class="col-md-6">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+  <!--userログイン時-->
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+  <!--adminログイン時-->
+          <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
+                <i class="fas fa-sign-out-alt"></i> ログアウト
+              <% end %>
+            </li>
+  <!--ログアウト時-->
+          <% else %>
+            <li>
+              <%= link_to new_user_registration_path, class: 'nav-link font-weight-bolder' do %>
+                <i class="fa-solid fa-pen"></i> 新規登録
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class: 'nav-link font-weight-bolder' do %>
+                <i class="fas fa-sign-in-alt"></i> ログイン
+              <% end %>
+            </li>
+          <% end %>
+          </ul>
+          </div>
+        </nav>
+  <!--検索窓-->
+        <div class="row justify-content-end pr-5 pb-2">
+          <%= form_with url: root_path, local: true, method: :get do |f| %>
+            <%= f.text_field :word %>
+            <%= f.submit "検索", class: "btn btn-outline-dark" %>
+          <% end %>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</header>
