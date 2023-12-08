@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.custom-link i {
+    color: #87cefa; /* 通常のアイコン色 */
+}
+  
+.custom-link:hover i {
+    color: #1e90ff; /* ホバー時のアイコン色 */
+}

@@ -1,0 +1,39 @@
+<div class="container">
+  
+  <h3>タグ一覧・追加</h3>
+    <% if @tag.errors.any? %>
+      <strong><%= @tag.errors.count %>件のエラーが出たので登録できませんでした。</strong>
+      <ul>
+        <% @tag.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end%>
+      </ul>
+    <% end %>
+  <br>
+  <br>
+  <div class='row'>
+    <%= form_with model:@tag, url: admin_tags_path, method: :post, local:true do |f| %>
+      <div class="form-group">
+        <%= f.label :tag_name, "タグ名" %>
+        <%= f.text_field :tag_name, placeholder: "タグ名",  class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "新規登録", class: 'btn btn-outline-success' %>
+      </div>
+    <% end %>
+  </div>
+  
+  <br>
+  <div class="d-flex flex-row">
+    <% @tags.each do |tag| %>
+      <p class="mx-2 my-1 badge badge-secondary" style="font-size: 20px;">
+        #<%= tag.tag_name %>
+        <%= link_to  edit_admin_tag_path(tag.id), method: :get, class: "custom-link" do %>
+          <i class="fa-solid fa-pen"></i>
+        <% end %>
+      </p>
+    <% end %>
+  </div>
+    
+
+</div>
