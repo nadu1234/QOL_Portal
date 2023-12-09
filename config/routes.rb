@@ -9,12 +9,14 @@ Rails.application.routes.draw do
   }
   
   
+  get "users" => redirect("/users/sign_up") #バリデーションエラー時リロードするとエラー回避
+  get "posts" => redirect("/posts/new") #バリデーションエラー時リロードするとエラー回避
   root to: "homes#top"
   get 'about'=>"homes#about",as: "about"
   
   scope module: :public do
     resources :users, only:[:show, :edit, :update, :leave]
-    resources :posts, only:[:new, :create, :update, :destroy]
+    resources :posts, only:[:new, :show, :edit, :create, :update, :destroy]
     resources :comments, only:[:create, :destroy]
     resources :favorites, only:[:create, :destroy]
     resources :relationships, only:[:create, :destroy]

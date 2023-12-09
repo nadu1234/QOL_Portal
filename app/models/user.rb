@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :follow_user, through: :follow, source: :follower # 自分がフォローしている人
   has_many :follower_user, through: :follower, source: :follow # 自分をフォローしている人
 
+  validates :name, presence: true
+
   # ユーザーをフォローする
   def is_follow(user_id)
     follow.create(follower_id: user_id)

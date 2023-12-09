@@ -13,6 +13,6 @@ class Post < ApplicationRecord
 
   validates :title,presence:true
   validates :body_top,presence:true#,length:{maximum:200}
-  validates :body_middle#,length:{maximum:200}
-  validates :body_bottom#,length:{maximum:200}
+  #validates :body_middle,length:{maximum:200}
+  #validates :body_bottom,length:{maximum:200}
 end
