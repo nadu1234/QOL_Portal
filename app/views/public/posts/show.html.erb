@@ -30,4 +30,19 @@
   <%= link_to "編集する", edit_post_path(@post.id),class: 'btn btn-success btn-lg' %>
   </div>
   <% end %>
+  
+  <div id="favorite_buttons_<%= @post.id %>">
+    <%= render "public/favorites/favorites", post: @post %>
+  </div>
+  
+  <div id="comment_counter">
+     <%= render "public/comments/count", post: @post %>
+  </div>
+  <h2>コメント</h2>
+  <div id="comment_index">
+    <%= render "public/comments/comment", post: @post %>
+  </div>
+  
+  <br>
+    <%= render "public/comments/form", post: @post, comment: @comment %>
 </div>

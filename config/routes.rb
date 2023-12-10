@@ -16,9 +16,10 @@ Rails.application.routes.draw do
   
   scope module: :public do
     resources :users, only:[:show, :edit, :update, :leave]
-    resources :posts, only:[:new, :show, :edit, :create, :update, :destroy]
-    resources :comments, only:[:create, :destroy]
-    resources :favorites, only:[:create, :destroy]
+    resources :posts, only:[:new, :show, :edit, :create, :update, :destroy] do
+      resource :favorites, only:[:create, :destroy]
+      resources :comments, only:[:create, :destroy]
+    end
     resources :relationships, only:[:create, :destroy]
     get 'searches/search' => "#search"
   end

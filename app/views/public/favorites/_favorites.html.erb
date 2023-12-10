@@ -1,0 +1,13 @@
+<% if post.favorites.exists?(user_id: current_user.id) %>
+  <p>
+    <%= link_to post_favorites_path(post), method: :delete , class: "text-danger", remote: true do %>
+      いいね♥<%= post.favorites.count %>
+    <% end %>
+  </p>
+  <% else %>
+  <p>
+    <%= link_to post_favorites_path(post), method: :post, remote: true do %>
+      いいね♥<%= post.favorites.count %>
+    <% end %>
+  </p>
+<% end %>
