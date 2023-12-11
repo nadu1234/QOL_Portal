@@ -1,2 +1,33 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-text">
+          Some quick example text to build on the card title
+          and make up the bulk of the card's content.
+        </p>
+        <a href="#!" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    
+    
+    <% @posts.each do |post| %>
+    <div class="card">
+      <div class="card-header">
+        <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-success" %>
+      </div>
+      <div class="card-body">
+        <div class="card-title"><%= link_to post.user.name, user_path(post.user.id) %></div>
+        <%= link_to post.title, post_path(post.id) %>
+          <div>
+           <p class="badge badge-light"><% post.tags.each do |t| %>
+              <%= link_to t.tag_name, root_path%>
+            <% end %></p>
+           <p class="badge badge-pill badge-primary">いいね数<%= post.favorites.count %></p>
+          </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

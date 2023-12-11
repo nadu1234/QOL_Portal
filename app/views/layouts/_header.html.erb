@@ -34,6 +34,11 @@
   <!--ログアウト時-->
           <% else %>
             <li>
+              <%= link_to users_guest_sign_in_path, class: "nav-link font-weight-bolder", method: :post  do %>
+                <i class="fa-solid fa-key"></i> ゲストログイン
+              <% end %>
+            </li>
+            <li>
               <%= link_to new_user_registration_path, class: 'nav-link font-weight-bolder' do %>
                 <i class="fa-solid fa-pen"></i> 新規登録
               <% end %>

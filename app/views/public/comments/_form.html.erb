@@ -1,4 +1,6 @@
-<%= form_with model: [post, comment], local: false do |f| %>
-  <%= f.text_area :comment, rows: '3', placeholder: "", class: "form-control comment_textarea" %>
-  <%= f.submit "コメント投稿" %>
+<% if user_signed_in? %>
+  <%= form_with model: [post, comment], local: false do |f| %>
+    <%= f.text_area :comment, rows: '3', placeholder: "", class: "form-control comment_textarea" %>
+    <%= f.submit "コメント投稿" %>
+  <% end %>
 <% end %>

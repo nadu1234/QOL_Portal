@@ -1,0 +1,20 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class="media">
+        <%= image_tag @user.get_profile_image, size:'100x100' %>
+        <div class="media-body">
+          <h5 class="mt-0"><%= @user.name %>
+            <div id="follow_btn_<%= @user.id %>">
+              <%= render "public/relationships/follow_btn", user: @user %>
+            </div>
+            <div id="follower_count">
+              <%= render "public/relationships/count", user: @user %>
+            </div>
+          </h5>
+          <%= @user.profile %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

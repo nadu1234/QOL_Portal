@@ -16,6 +16,18 @@ class User < ApplicationRecord
   has_many :follower_user, through: :follower, source: :follow # 自分をフォローしている人
 
   validates :name, presence: true
+  
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.profile = "デフォルトのプロフィール"
+      user.name = "ゲスト"
+      user.is_active = true
+      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+      # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
+    end
+  end
+  
 
   # ユーザーをフォローする
   def is_follow(user_id)
