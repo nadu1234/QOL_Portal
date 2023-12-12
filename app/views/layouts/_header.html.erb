@@ -20,6 +20,11 @@
   <!--userログイン時-->
           <% if user_signed_in? %>
             <li>
+              <%= link_to new_post_path, class: 'nav-link font-weight-bolder' do %>
+                <i class="fa-solid fa-circle-plus"></i> 投稿
+              <% end %>
+            </li>
+            <li>
               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
                 <i class="fas fa-sign-out-alt"></i> ログアウト
               <% end %>

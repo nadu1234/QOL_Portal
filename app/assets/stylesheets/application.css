@@ -20,3 +20,14 @@
 .custom-link:hover i {
     color: #1e90ff; /* ホバー時のアイコン色 */
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 69% 86%, rgba(254,254,254, 0.06) 0%, rgba(254,254,254, 0.06) 25%,rgba(60,127,250, 0.07) 25%, rgba(60,127,250, 0.07) 50%,rgba(199,192,192, 0.14) 50%, rgba(199,192,192, 0.14) 75%,rgba(249, 249, 249,0.06) 75%, rgba(249, 249, 249,0.06) 100%),radial-gradient(circle at 49% 76%, rgba(96,210,238, 0.15) 0%, rgba(96,210,238, 0.15) 25%,rgba(184,255,255, 0.11) 25%, rgba(184,255,255, 0.11) 50%,rgba(200,200,200, 0) 50%, rgba(200,200,200, 0) 75%,rgba(235,235,235, 0) 75%, rgba(235,235,235, 0) 100%),radial-gradient(circle at 22% 64%, rgba(197,197,197, 0) 0%, rgba(197,197,197, 0) 25%,rgba(177,248,248, 0.1) 25%, rgba(177,248,248, 0.1) 50%,rgba(64,64,64, 0.03) 50%, rgba(64,64,64, 0.03) 75%,rgba(0,0,0, 0.11) 75%, rgba(0,0,0, 0.11) 100%),linear-gradient(307deg, rgb(171,228,255),rgb(171,228,255));
+}
+
+.footer {
+    margin-top: auto;
+}

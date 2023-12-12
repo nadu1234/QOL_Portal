@@ -2,9 +2,9 @@
   <tbody>
     <% post.comments.each do |comment| %>
       <tr>
-        <td><%= link_to(post.user) do %>
-        <%= image_tag comment.user.get_profile_image, size:'50x50' %><br>
-        <%= comment.user.name %>
+        <td><%= link_to user_path(comment.user.id) do %>
+          <%= image_tag comment.user.get_profile_image, size:'50x50' %><br>
+          <%= comment.user.name %>
         <% end %>
         </td>
         <td>

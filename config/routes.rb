@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resources :comments, only:[:create, :destroy]
     end
     resources :relationships, only:[:create, :destroy]
+    resources :tags, only: [:show]
+    resources :categories, only: [:show]
     get 'searches/search' => "#search"
   end
 

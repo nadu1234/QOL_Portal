@@ -15,4 +15,7 @@ class Post < ApplicationRecord
   validates :body_top,presence:true#,length:{maximum:200}
   #validates :body_middle,length:{maximum:200}
   #validates :body_bottom,length:{maximum:200}
+  
+  scope :is_release, -> { where(is_release: true) } #公開のものだけを取得するクエリ
+  
 end

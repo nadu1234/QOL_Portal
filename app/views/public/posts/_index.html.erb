@@ -1,0 +1,30 @@
+<% posts.each do |post| %>
+  <div class="col-sm-10">
+    <div class="card">
+      <div class="card-header">
+        <%= link_to post.category.category_name, category_path(post), class: "btn btn-sm btn-success" %>
+      </div>
+      <div class="card-body">
+        <div class="card-title">
+          <%= link_to user_path(post.user.id) do %>
+            <%= image_tag post.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px;' %>
+            <%= post.user.name %>
+          <% end %>
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: center;">
+          <h2 style="flex: 1;"><%= link_to post.title, post_path(post.id) %></h2>
+          <div style="display: flex; gap: 10px;">
+            <p class="badge badge-light">
+              <% post.tags.each do |t| %>
+                <%= link_to "##{t.tag_name}", tag_path(t) %>
+              <% end %>
+            </p>
+            <p class="badge badge-pill badge-primary">
+              いいね数<%= post.favorites.count %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
