@@ -1,48 +1,43 @@
 <div class="container py-5">
   <h2 class="pb-5 ml-5"><%= @post.title %></h2>
-  <%= @post.category.category_name %>
-  <ul>
-    <% @tags.each do |tag| %>
-      <li><%= tag.tag_name %></li>
-    <% end %>
-  </ul>
-  <%= image_tag @post.top_image, size:'297x210' %>
-  <%= @post.body_top %>
-  
-  <% if @post.middle_image.attached? %>
-    <%= image_tag @post.middle_image, size:'297x210' %>
-  <% end %>
-  
-  <% if @post.body_middle.present? %>
-    <%= @post.body_middle %>
-  <% end %>
-  
-  <% if @post.bottom_image.attached? %>
-    <%= image_tag @post.bottom_image, size:'297x210' %>
-  <% end %>
-  
-  <% if @post.body_bottom.present? %>
-    <%= @post.body_bottom %>
-  <% end %>
-  
-  <% if @post.user == current_user %>
-  <div class="row justify-content-around">
-  <%= link_to "編集する", edit_post_path(@post.id),class: 'btn btn-success btn-lg' %>
+  <div class="row">
+    <div class="col-4">
+      <%= @post.category.category_name %>
+      <ul>
+        <% @tags.each do |tag| %>
+          <li><%= tag.tag_name %></li>
+        <% end %>
+      </ul>
+      <% if @post.post_images.attached? %>
+        <div class="slider">
+        <% @post.post_images.each do |image| %>
+          <%= image_tag image, size: '297x210' %>
+        <% end %>
+        </div>
+      <% end %>
+      <%= @post.explanation %>
+      
+      
+      <% if @post.user == current_user %>
+      <div class="row justify-content-around">
+      <%= link_to "編集する", edit_post_path(@post.id),class: 'btn btn-success btn-lg' %>
+      </div>
+      <% end %>
+      
+      <div id="favorite_buttons_<%= @post.id %>">
+        <%= render "public/favorites/favorites", post: @post %>
+      </div>
+      
+      <div id="comment_counter">
+         <%= render "public/comments/count", post: @post %>
+      </div>
+      <h2>コメント</h2>
+      <div id="comment_index">
+        <%= render "public/comments/comment", post: @post %>
+      </div>
+      
+      <br>
+        <%= render "public/comments/form", post: @post, comment: @comment %>
+    </div>
   </div>
-  <% end %>
-  
-  <div id="favorite_buttons_<%= @post.id %>">
-    <%= render "public/favorites/favorites", post: @post %>
-  </div>
-  
-  <div id="comment_counter">
-     <%= render "public/comments/count", post: @post %>
-  </div>
-  <h2>コメント</h2>
-  <div id="comment_index">
-    <%= render "public/comments/comment", post: @post %>
-  </div>
-  
-  <br>
-    <%= render "public/comments/form", post: @post, comment: @comment %>
 </div>

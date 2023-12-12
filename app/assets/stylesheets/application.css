@@ -31,3 +31,37 @@ body {
 .footer {
     margin-top: auto;
 }
+
+.slider .slick-slide.slick-center {
+  transform: scale(1); /* 中央にきたメインスライドが通常サイズに拡大 */
+  opacity: 1; /* スライドの透明度を1に設定し透明じゃなくする */
+}
+
+.slider img {
+  width: 297px;
+  height: 210px;
+}
+
+.slick-dots {
+  text-align: center;
+  margin: 20px 40px 0 0;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.slick-dots button {
+  color: transparent; /* ドットのテキストを透明にして非表示にする */
+  width: 12px;
+  height: 12px;
+  display: block;
+  border-radius: 50%;
+  background: #d3d3d3; /* ドットの背景色を薄いピンクに設定 */
+  border: none;
+}
+
+.slick-dots .slick-active button {
+  background: #696969; /* アクティブなドットの背景色を濃いピンクに設定 */
+}
