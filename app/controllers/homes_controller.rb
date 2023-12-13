@@ -9,15 +9,15 @@ class HomesController < ApplicationController
     @selected_tags = params[:tags]
 
     # 選択された条件に基づいて投稿をフィルタリング
-    @posts = if @selected_tags.present? && @selected_category != '全て'
+    @posts = if @selected_tags.present? && @selected_category.present?
                @posts_release.filter_by_category_and_tags(@selected_category, @selected_tags)
              elsif @selected_category.present? && @selected_tags.blank?
                @posts_release.filter_by_category(@selected_category)
-             elsif @selected_tags.present? && @selected_category == '全て'
+             elsif @selected_tags.present? && @selected_category.blank?
                @posts_release.filter_by_tags(@selected_tags)
              else
-               @posts_release.all
+               @posts_release
              end
-    
+
   end
 end

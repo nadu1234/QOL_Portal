@@ -17,16 +17,16 @@ class Post < ApplicationRecord
   validates :explanation,presence:true#,length:{maximum:200}
   #validates :body_middle,length:{maximum:200}
   #validates :body_bottom,length:{maximum:200}
-  
+
   scope :is_release, -> { where(is_release: true) } #公開のものだけを取得するクエリ
-  
+
   scope :filter_by_category_and_tags, ->(category, tags) {
     joins(:category, :tags)
       .where(categories: { category_name: category })
       .where(tags: { tag_name: tags })
       .distinct
   }
-  
+
   scope :filter_by_category, ->(category) {
     joins(:category)
       .where(categories: { category_name: category })
@@ -38,5 +38,5 @@ class Post < ApplicationRecord
       .where(tags: { tag_name: tags })
       .distinct
   }
-  
+
 end

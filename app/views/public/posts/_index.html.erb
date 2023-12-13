@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-  <div class="col-sm-10">
+  <div class="col-sm-10 py-1">
     <div class="card">
       <div class="card-header">
         <%= link_to post.category.category_name, category_path(post), class: "btn btn-sm btn-success" %>
