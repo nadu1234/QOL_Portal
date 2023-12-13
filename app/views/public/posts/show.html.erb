@@ -3,25 +3,24 @@
   <div class="row">
     <div class="col-4">
       <%= @post.category.category_name %>
-      <ul>
-        <% @tags.each do |tag| %>
-          <li><%= tag.tag_name %></li>
-        <% end %>
-      </ul>
+        <p class="badge badge-light">
+          <% @tags.each do |t| %>
+            <%= link_to "##{t.tag_name}", tag_path(t) %>
+          <% end %>
+        </p>
       <% if @post.post_images.attached? %>
         <div class="slider">
-        <% @post.post_images.each do |image| %>
-          <%= image_tag image, size: '297x210' %>
-        <% end %>
+          <% @post.post_images.each do |image| %>
+            <%= image_tag image, size: '297x210' %>
+          <% end %>
         </div>
       <% end %>
       <%= @post.explanation %>
       
-      
       <% if @post.user == current_user %>
-      <div class="row justify-content-around">
-      <%= link_to "編集する", edit_post_path(@post.id),class: 'btn btn-success btn-lg' %>
-      </div>
+        <div class="row justify-content-around">
+          <%= link_to "編集する", edit_post_path(@post.id),class: 'btn btn-success btn-lg' %>
+        </div>
       <% end %>
       
       <div id="favorite_buttons_<%= @post.id %>">
@@ -39,5 +38,39 @@
       <br>
         <%= render "public/comments/form", post: @post, comment: @comment %>
     </div>
+    
+    <div class="col-3">
+    <table class='table'>
+      <tr><%= image_tag @user.get_profile_image, size:'100x100' %></tr>
+      <tr>
+    	  <th>名前</th>
+    	  <th><%= @user.name %></th>
+      </tr>
+      <tr>
+    	  <th>紹介</th>
+    	  <th><%= @user.profile %></th>
+      </tr>
+      <tr>
+        <th>follows</th>
+        <th><%= link_to @user.follow.count %></th>
+      </tr>
+      <tr>
+        <th>followers</th>
+        <th><%= link_to @user.follower.count %></th>
+      </tr>
+    </table>
+    　
+    <div class='row'>
+      <% if current_user != @user %>
+        <!--<td>< %= render "relationships/btn", user: @user %></td>-->
+      <% else %>
+        <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      <% end %>
+    </div>
+    </div>
+    
+    
   </div>
 </div>

@@ -20,4 +20,23 @@ class Post < ApplicationRecord
   
   scope :is_release, -> { where(is_release: true) } #公開のものだけを取得するクエリ
   
+  scope :filter_by_category_and_tags, ->(category, tags) {
+    joins(:category, :tags)
+      .where(categories: { category_name: category })
+      .where(tags: { tag_name: tags })
+      .distinct
+  }
+  
+  scope :filter_by_category, ->(category) {
+    joins(:category)
+      .where(categories: { category_name: category })
+      .distinct
+  }
+
+  scope :filter_by_tags, ->(tags) {
+    joins(:tags)
+      .where(tags: { tag_name: tags })
+      .distinct
+  }
+  
 end

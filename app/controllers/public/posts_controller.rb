@@ -10,6 +10,7 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @tags = @post.tags
     @comment = Comment.new
+    @user = @post.user
   end
   
   def edit

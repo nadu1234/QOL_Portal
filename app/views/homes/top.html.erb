@@ -1,5 +1,14 @@
 <div class="container">
   <div class="row justify-content-center mt-4">
+    <h2>Filter by Category</h2>
+    <%= form_with(url: root_path, method: :get) do |f| %>
+    <%= f.select :category, options_for_select(@categories.pluck(:category_name), @selected_category), prompt: '全て' %>
+    
+    <h2>Filter by Tags</h2>
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :tag_name, { checked: @selected_tags }, { multiple: true } %>
+    
+    <%= f.submit 'Filter' %>
+    <% end %>
     <%= render "public/posts/index", posts: @posts %>
   </div>
 </div>
