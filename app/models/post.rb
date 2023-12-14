@@ -9,9 +9,9 @@ class Post < ApplicationRecord
 
   has_many_attached :post_images
 
-  has_one_attached :top_image
-  has_one_attached :middle_image
-  has_one_attached :bottom_image
+  # has_one_attached :top_image
+  # has_one_attached :middle_image
+  # has_one_attached :bottom_image
 
   validates :title,presence:true
   validates :explanation,presence:true#,length:{maximum:200}
