@@ -42,6 +42,21 @@ body {
   height: 210px;
 }
 
+.slick-slide img {
+  height: 30vw;
+  max-height: 400px;
+  min-height: 350px;
+}
+
+.slick-slide {
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+  transform: scale( .50 );
+}
+.is--active {
+  transform: scale( 1 );
+}
+
 .slick-dots {
   text-align: center;
   margin: 20px 40px 0 0;

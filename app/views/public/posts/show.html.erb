@@ -1,17 +1,17 @@
 <div class="container py-5">
   <h2 class="pb-5 ml-5"><%= @post.title %></h2>
   <div class="row">
-    <div class="col-4">
-      <%= @post.category.category_name %>
+    <div class="col-8">
+      <%= link_to @post.category.category_name, root_path(category: @post.category.category_name), class: "btn btn-sm btn-success" %>
         <p class="badge badge-light">
           <% @tags.each do |t| %>
-            <%= link_to "##{t.tag_name}", tag_path(t) %>
+            <%= link_to "##{t.tag_name}", root_path(tags: t.tag_name) %>
           <% end %>
         </p>
       <% if @post.post_images.attached? %>
         <div class="slider">
           <% @post.post_images.each do |image| %>
-            <%= image_tag image, size: '297x210' %>
+            <%= image_tag image %>
           <% end %>
         </div>
       <% end %>
@@ -36,39 +36,27 @@
       </div>
       
       <br>
-        <%= render "public/comments/form", post: @post, comment: @comment %>
+        <%= render "public/comments/form", post: @post, comment: @comment, user: @user %>
     </div>
     
-    <div class="col-3">
-    <table class='table'>
-      <tr><%= image_tag @user.get_profile_image, size:'100x100' %></tr>
-      <tr>
-    	  <th>名前</th>
-    	  <th><%= @user.name %></th>
-      </tr>
-      <tr>
-    	  <th>紹介</th>
-    	  <th><%= @user.profile %></th>
-      </tr>
-      <tr>
-        <th>follows</th>
-        <th><%= link_to @user.follow.count %></th>
-      </tr>
-      <tr>
-        <th>followers</th>
-        <th><%= link_to @user.follower.count %></th>
-      </tr>
-    </table>
-    　
-    <div class='row'>
-      <% if current_user != @user %>
-        <!--<td>< %= render "relationships/btn", user: @user %></td>-->
-      <% else %>
-        <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
-          <i class="fas fa-user-cog"></i>
-        <% end %>
-      <% end %>
-    </div>
+    <div class="col-3 offset-1">
+      <div style="display: flex; align-items: center;">
+        <%= image_tag @user.get_profile_image, size:'100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px;' %>
+        <div>
+          <h3><%= @user.name %></h3>
+          <% if current_user != @user %>
+          <div id="follow_btn_<%= @user.id %>">
+            <%= render "public/relationships/follow_btn", user: @user %>
+          </div>
+          <% else %>
+            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
+              <i class="fas fa-user-cog"></i>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      
+      <%= @user.profile %>
     </div>
     
     

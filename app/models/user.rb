@@ -28,6 +28,9 @@ class User < ApplicationRecord
     end
   end
   
+  def active_for_authentication?
+    super && (is_active == true)
+  end
 
   # ユーザーをフォローする
   def is_follow(user_id)

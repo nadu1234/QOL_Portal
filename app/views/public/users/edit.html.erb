@@ -1,0 +1,44 @@
+<div class="container">
+  <h2>アカウント編集</h2>
+  
+  <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
+  
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :profile_image , "プロフィール画像(任意)"%><br>
+      <%= f.file_field :profile_image, accept: 'image/*' %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :profile , "自己紹介(任意)"%><br>
+      <%= f.text_area :profile %>
+    </div>
+  
+    <!--<div class="field">-->
+    <!--  < %= f.label :email %><br />-->
+    <!--  < %= f.email_field :email, autofocus: true, autocomplete: "email" %>-->
+    <!--</div>-->
+  
+    <!--<div class="field">-->
+    <!--  < %= f.label :password %>-->
+    <!--  < % if @minimum_password_length %>-->
+    <!--  <em>(<　%= @minimum_password_length %> 文字以上)</em>-->
+    <!--  < % end %><br />-->
+    <!--  < %= f.password_field :password, autocomplete: "new-password" %>-->
+    <!--</div>-->
+  
+    <!--<div class="field">-->
+    <!--  < %= f.label :password_confirmation %><br />-->
+    <!--  < %= f.password_field :password_confirmation, autocomplete: "new-password" %>-->
+    <!--</div>-->
+  
+    <div class="actions">
+      <%= f.submit "変更を保存" %>
+    </div>
+  <% end %>
+  
+</div>

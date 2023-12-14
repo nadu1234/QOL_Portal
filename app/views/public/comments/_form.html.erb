@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user != user %>
   <%= form_with model: [post, comment], local: false do |f| %>
     <%= f.text_area :comment, rows: '3', placeholder: "", class: "form-control comment_textarea" %>
     <%= f.submit "コメント投稿" %>

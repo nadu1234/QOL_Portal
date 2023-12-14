@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :tags, only: [:show]
     resources :categories, only: [:show]
     get 'searches/search' => "#search"
+    patch  '/users/withdraw' => 'users#withdraw'
   end
 
   get 'admin',to:'admin/homes#top'
