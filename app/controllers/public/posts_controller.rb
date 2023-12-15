@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @post_active = @post.is_release
     @tags = @post.tags
     @comment = Comment.new
     @user = @post.user

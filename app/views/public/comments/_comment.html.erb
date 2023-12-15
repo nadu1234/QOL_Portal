@@ -1,21 +1,23 @@
 <table class='table table-sm'>
   <tbody>
     <% post.comments.each do |comment| %>
-      <tr>
-        <td><%= link_to user_path(comment.user.id) do %>
-          <%= image_tag comment.user.get_profile_image, size:'50x50' %><br>
-          <%= comment.user.name %>
-        <% end %>
-        </td>
-        <td>
-          <%= comment.comment %>
-        </td>
-        <td>
-          <% if comment.user == current_user %>
-            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
+      <% if comment.user.is_active %>
+        <tr>
+          <td><%= link_to user_path(comment.user.id) do %>
+            <%= image_tag comment.user.get_profile_image, size:'50x50' %><br>
+            <%= comment.user.name %>
           <% end %>
-        </td>
-      </tr>
+          </td>
+          <td>
+            <%= comment.comment %>
+          </td>
+          <td>
+            <% if comment.user == current_user %>
+              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

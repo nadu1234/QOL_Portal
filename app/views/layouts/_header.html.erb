@@ -9,7 +9,7 @@
           <div>ようこそ、<%= current_user.name %>さん</div>
         <% end %>
       </div>
-      
+
       <div class="col-md-6">
         <nav class="navbar navbar-expand-lg navbar-light">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +28,17 @@
               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
                 <i class="fas fa-sign-out-alt"></i> ログアウト
               <% end %>
+            </li>
+            <li>
+              <div class="mypage-btn-container" id="mypageBtnContainer">
+                <button class="btn btn-lg mx-3" style="background-color:#FF9494; color: white;"><%= current_user.name %></button>
+                <div class="mypage-dropdown" id="mypageDropdown">
+                	<ul>
+                	  <li class="py-2"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+                	  <li class="py-2"><%= link_to "退会する", withdraw_user_path(current_user), method: :patch, "data-confirm" => "OKを押すと退会処理がされます。投稿した記事やコメントが削除されます。本当によろしいですか？" %></li>
+                	</ul>
+                </div>
+              </div>
             </li>
   <!--adminログイン時-->
           <% elsif admin_signed_in? %>
@@ -75,7 +86,7 @@
           <% end %>
         </div>
       </div>
-      
+
     </div>
   </div>
 </header>

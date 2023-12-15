@@ -1,1 +1,1 @@
-コメント数: <%= post.comments.count %>
+コメント数: <%= post.comments.includes(:user).where(user: { is_active: true }).count %>

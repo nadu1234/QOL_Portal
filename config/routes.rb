@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :users, only:[:show, :edit, :update, :leave] do
+      member do
+        patch :withdraw, to: 'users#withdraw', as: 'withdraw'
+      end
       resource :relationships, only: [:create, :destroy]
     end
     resources :posts, only:[:new, :show, :edit, :create, :update, :destroy] do
@@ -29,7 +32,6 @@ Rails.application.routes.draw do
     resources :tags, only: [:show]
     resources :categories, only: [:show]
     get 'searches/search' => "#search"
-    patch  '/users/withdraw' => 'users#withdraw'
   end
 
   get 'admin',to:'admin/homes#top'

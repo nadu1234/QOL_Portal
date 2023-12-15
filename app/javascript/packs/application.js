@@ -14,6 +14,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import "script.js"
 require("./slick")
 Rails.start()
 // Turbolinks.start()

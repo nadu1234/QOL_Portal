@@ -20,6 +20,8 @@ class Post < ApplicationRecord
 
   scope :is_release, -> { where(is_release: true) } #公開のものだけを取得するクエリ
 
+  scope :is_release_and_active, -> { joins(:user).merge(User.active).where(is_release: true) }#ビューで<% if xxxx.user.is_active %>と書けばいいので必要ないことが発覚したがせっかく作ったので残しておくort
+
   scope :filter_by_category_and_tags, ->(category, tags) {
     joins(:category, :tags)
       .where(categories: { category_name: category })

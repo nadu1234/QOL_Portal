@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    @posts_release = Post.is_release.order(created_at: :desc)
+    @posts_release = Post.is_release_and_active.order(created_at: :desc)
     @categories = Category.all
     @tags = Tag.all
 
