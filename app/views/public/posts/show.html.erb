@@ -41,9 +41,9 @@
     
     <div class="col-3 offset-1">
       <div style="display: flex; align-items: center;">
-        <%= image_tag @user.get_profile_image, size:'100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px;' %>
+        <%= link_to image_tag(@user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(@user) %>
         <div>
-          <h3><%= @user.name %></h3>
+          <h3><%= link_to @user.name, user_path(@user) %></h3>
           <% if current_user != @user %>
           <div id="follow_btn_<%= @user.id %>">
             <%= render "public/relationships/follow_btn", user: @user %>

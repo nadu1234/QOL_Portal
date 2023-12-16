@@ -7,7 +7,7 @@
       <div class="card-body">
         <div class="card-title">
           <%= link_to user_path(post.user.id) do %>
-            <%= image_tag post.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px;' %>
+            <%= image_tag post.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;' %>
             <%= post.user.name %>
           <% end %>
         </div>

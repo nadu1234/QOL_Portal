@@ -4,7 +4,7 @@
       <% if comment.user.is_active %>
         <tr>
           <td><%= link_to user_path(comment.user.id) do %>
-            <%= image_tag comment.user.get_profile_image, size:'50x50' %><br>
+            <%= image_tag comment.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden;  border: 1px solid #a9a9a9; background-color:#ffffff;' %><br>
             <%= comment.user.name %>
           <% end %>
           </td>

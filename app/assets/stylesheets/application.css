@@ -115,3 +115,11 @@ body {
 .category-container:hover {
   cursor: pointer;
 }
+
+ /*ヘッダーが常に表示されるように記述*/
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; 
+}
