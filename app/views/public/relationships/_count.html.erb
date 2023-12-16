@@ -1,1 +1,1 @@
-フォロワー数: <%= user.follower.count %>
+フォロワー数: <%= user.follower_user.where(is_active: true).count %>

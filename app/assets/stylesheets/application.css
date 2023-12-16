@@ -123,3 +123,35 @@ header {
   width: 100%;
   z-index: 1000; 
 }
+
+.text-invalid {
+  color: #bbb;
+}
+.text-active {
+  font-weight: bold;
+  color: #0a0;
+}
+
+.like-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 25px;
+ color: #808080; 
+ margin-left: 20px;
+ }
+
+.unlike-btn {
+ width: 25px;
+ height: 30px;
+ font-size: 25px;
+ color: #e54747;
+ margin-left: 20px;
+ }
+ 
+.no-decoration:hover {
+  text-decoration: none;
+}
+
+.large-text {
+    font-size: 1.3em;
+  }

@@ -16,35 +16,62 @@
         </div>
       </div>
       <% @posts.each do |post| %>
-      <div class="col-sm-10 py-2">
-        <div class="card">
-          <div class="card-header">
-            <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-success" %>
-          </div>
-          <div class="card-body">
-            <!--<div class="card-title">-->
-            <!--  < %= link_to user_path(post.user.id) do %>-->
-            <!--    < %= image_tag post.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px;' %>-->
-            <!--    < %= post.user.name %>-->
-            <!--  < % end %>-->
-            <!--</div>-->
-            <div style="display: flex; flex-direction: row; align-items: center;">
-              <h2 style="flex: 1;"><%= link_to post.title, post_path(post.id) %></h2>
-              <div style="display: flex; gap: 10px;">
-                <p class="badge badge-light">
-                  <% post.tags.each do |t| %>
-                    <%= link_to "##{t.tag_name}", root_path %>
-                  <% end %>
-                </p>
-                <p class="badge badge-pill badge-primary">
-                  いいね数<%= post.favorites.count %>
-                </p>
+        <% if user_signed_in? && (current_user.id == post.user.id || post.is_release) %>
+          <div class="col-sm-10 py-2">
+            <div class="card">
+              <div class="card-header">
+                <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-success" %>
+                <% if post.is_release? %>
+      						<span class="text-active">公開中</span>
+      					<% else %>
+      						<span class="text-invalid">非公開中</span>
+      					<% end %>
+              </div>
+              <div class="card-body">
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                  <h2><%= link_to post.title, post_path(post.id) %></h2>
+                  <%= image_tag post.get_post_image, size:'140x100', style: 'border-radius: 5%; overflow: hidden; background-color: white; margin-right: 200px;' %>
+                  <div style="justify-content: flex-end; text-align: right;">
+                    <p class="badge badge-light">
+                      <% post.tags.each do |t| %>
+                        <%= link_to "##{t.tag_name}", root_path %>
+                      <% end %>
+                    </p>
+                    <p class="badge badge-pill badge-primary">
+                      いいね数<%= post.favorites.count %>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    <% end %>
+        <% elsif !user_signed_in? && post.is_release %>
+          <!-- ログインしていない場合には公開の投稿のみ表示 -->
+          <div class="col-sm-10 py-2">
+            <div class="card">
+              <div class="card-header">
+                <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-success" %>
+              </div>
+              <div class="card-body">
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                  <h2><%= link_to post.title, post_path(post.id) %></h2>
+                  <%= image_tag post.get_post_image, size:'140x100', style: 'border-radius: 5%; overflow: hidden; background-color: white; margin-right: 200px;' %>
+                  <div style="justify-content: flex-end; text-align: right;">
+                    <p class="badge badge-light">
+                      <% post.tags.each do |t| %>
+                        <%= link_to "##{t.tag_name}", root_path %>
+                      <% end %>
+                    </p>
+                    <p class="badge badge-pill badge-primary">
+                      いいね数<%= post.favorites.count %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

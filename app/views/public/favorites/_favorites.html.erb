@@ -1,15 +1,17 @@
 <% if user_signed_in? && post.user != current_user %>
   <% if post.favorites.exists?(user_id: current_user.id) %>
     <p>
-      <%= link_to post_favorites_path(post), method: :delete , class: "text-danger", remote: true do %>
-        いいね済♥<%= post.favorites.count %>
+      <%= link_to post_favorites_path(post), method: :delete , class: "no-decoration", remote: true do %>
+        <i class="far fa-heart like-btn" ></i>
       <% end %>
+      <%= post.favorites.count %>
     </p>
     <% else %>
     <p>
-      <%= link_to post_favorites_path(post), method: :post, remote: true do %>
-        いいね♥<%= post.favorites.count %>
+      <%= link_to post_favorites_path(post), method: :post, class: "no-decoration", remote: true do %>
+        <i class="fas fa-heart unlike-btn"></i>
       <% end %>
+      <%= post.favorites.count %>
     </p>
   <% end %>
 <% end %>

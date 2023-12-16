@@ -1,46 +1,53 @@
 <div class="container py-5">
   <h2 class="pb-5 ml-5"><%= @post.title %></h2>
   <div class="row">
-    <div class="col-8">
-      <%= link_to @post.category.category_name, root_path(category: @post.category.category_name), class: "btn btn-sm btn-success" %>
-        <p class="badge badge-light">
-          <% @tags.each do |t| %>
-            <%= link_to "##{t.tag_name}", root_path(tags: t.tag_name) %>
-          <% end %>
-        </p>
-      <% if @post.post_images.attached? %>
-        <div class="slider">
-          <% @post.post_images.each do |image| %>
-            <%= image_tag image %>
-          <% end %>
+    <div class="col-8" style="border-radius: 5%; background-color: white;">
+      <div class="py-3">
+        <%= link_to @post.category.category_name, root_path(category: @post.category.category_name), class: "btn btn-sm btn-success" %>
+          <p class="badge badge-light">
+            <% @tags.each do |t| %>
+              <%= link_to "##{t.tag_name}", root_path(tags: t.tag_name) %>
+            <% end %>
+          </p>
+        <% if @post.post_images.attached? %>
+          <div class="slider">
+            <% @post.post_images.each do |image| %>
+              <%= image_tag image %>
+            <% end %>
+          </div>
+        <% else %>
+          <div>
+          </div>
+        <% end %>
+        <div class="large-text">
+          <%= @post.explanation %>
         </div>
-      <% end %>
-      <%= @post.explanation %>
-      
-      <% if @post.user == current_user %>
-        <div class="row justify-content-around">
-          <%= link_to "編集する", edit_post_path(@post.id),class: 'btn btn-success btn-lg' %>
+        
+        <% if @post.user == current_user %>
+          <div class="row justify-content-around">
+            <%= link_to "編集する", edit_post_path(@post.id),class: 'btn btn-success btn-lg' %>
+          </div>
+        <% end %>
+        
+        <div id="favorite_buttons_<%= @post.id %>">
+          <%= render "public/favorites/favorites", post: @post %>
         </div>
-      <% end %>
-      
-      <div id="favorite_buttons_<%= @post.id %>">
-        <%= render "public/favorites/favorites", post: @post %>
+        
+        <div id="comment_counter">
+           <%= render "public/comments/count", post: @post %>
+        </div>
+        <h2>コメント</h2>
+        <div id="comment_index">
+          <%= render "public/comments/comment", post: @post %>
+        </div>
+        
+        <br>
+          <%= render "public/comments/form", post: @post, comment: @comment, user: @user %>
       </div>
-      
-      <div id="comment_counter">
-         <%= render "public/comments/count", post: @post %>
-      </div>
-      <h2>コメント</h2>
-      <div id="comment_index">
-        <%= render "public/comments/comment", post: @post %>
-      </div>
-      
-      <br>
-        <%= render "public/comments/form", post: @post, comment: @comment, user: @user %>
     </div>
     
-    <div class="col-3 offset-1">
-      <div style="display: flex; align-items: center;">
+    <div class="col-3 offset-1" style="border-radius: 5%; background-color: white; height: 320px;">
+      <div class="py-2" style="display: flex; align-items: center;">
         <%= link_to image_tag(@user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(@user) %>
         <div>
           <h3><%= link_to @user.name, user_path(@user) %></h3>
@@ -55,8 +62,9 @@
           <% end %>
         </div>
       </div>
-      
+      <p style="overflow: auto; height: 200px;">
       <%= @user.profile %>
+      </p>
     </div>
     
     

@@ -40,5 +40,14 @@ class Post < ApplicationRecord
       .where(tags: { tag_name: tags })
       .distinct
   }
+  
+  def get_post_image
+    if post_images.attached? && post_images.first.present?
+      post_images.first
+    else
+      'no_image_yoko.jpg'
+    end
+  end
+
 
 end
