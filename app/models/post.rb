@@ -20,7 +20,7 @@ class Post < ApplicationRecord
 
   scope :is_release, -> { where(is_release: true) } #公開のものだけを取得するクエリ
 
-  scope :is_release_and_active, -> { joins(:user).merge(User.active).where(is_release: true) }#ビューで<% if xxxx.user.is_active %>と書けばいいので必要ないことが発覚したがせっかく作ったので残しておくort
+  scope :is_release_and_active, -> { joins(:user).merge(User.active).where(is_release: true) }
 
   scope :filter_by_category_and_tags, ->(category, tags) {
     joins(:category, :tags)
@@ -41,11 +41,30 @@ class Post < ApplicationRecord
       .distinct
   }
   
+  scope :order_by_favorites, -> {
+    left_joins(:favorites)
+      .group('posts.id')
+      .order('COUNT(favorites.id) DESC')
+  }
+
+  scope :order_by_comments, -> {
+    left_joins(:comments)
+      .group('posts.id')
+      .order('COUNT(comments.id) DESC')
+  }
+  
+  
   def get_post_image
     if post_images.attached? && post_images.first.present?
       post_images.first
     else
       'no_image_yoko.jpg'
+    end
+  end
+
+  def self.search(search)
+    if search != ""
+      is_release_and_active.where(['title LIKE(?) OR explanation LIKE(?)', "%#{search}%", "%#{search}%"])
     end
   end
 

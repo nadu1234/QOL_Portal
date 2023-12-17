@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="pt-2">
+    <h2>"<%= params[:keyword] %>"検索結果</h2>
+  </div>
+  <div class="row justify-content-center mt-4">
+    <% if @posts.present? %>
+      <%= render "public/posts/index", posts: @posts %>
+    <% else %>
+      <h4>・該当する投稿がありません</h4>
+    <% end %>
+  </div>
+</div>

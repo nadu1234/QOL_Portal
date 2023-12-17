@@ -21,8 +21,11 @@
               <%= link_to "##{t.tag_name}", root_path(tags: t.tag_name) %>
             <% end %>
           </p>
-          <p class="badge badge-pill badge-primary">
-            いいね数<%= post.favorites.count %>
+          <p class="badge badge-primary">
+            いいね数:<%= post.favorites.count %>
+          </p>
+          <p class="badge badge-primary">
+          コメント数:<%= post.comments.includes(:user).where(user: { is_active: true }).count %>
           </p>
         </div>
       </div>

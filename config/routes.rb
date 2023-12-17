@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :relationships, only:[:create, :destroy]
     resources :tags, only: [:show]
     resources :categories, only: [:show]
-    get 'searches/search' => "#search"
+    get 'searches/search', to: 'searches#search', as: 'search'
   end
 
   get 'admin',to:'admin/homes#top'

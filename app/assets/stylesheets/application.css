@@ -16,7 +16,7 @@
 .custom-link i {
     color: #87cefa; /* 通常のアイコン色 */
 }
-  
+
 .custom-link:hover i {
     color: #1e90ff; /* ホバー時のアイコン色 */
 }
@@ -25,7 +25,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-image: radial-gradient(circle at 69% 86%, rgba(254,254,254, 0.06) 0%, rgba(254,254,254, 0.06) 25%,rgba(60,127,250, 0.07) 25%, rgba(60,127,250, 0.07) 50%,rgba(199,192,192, 0.14) 50%, rgba(199,192,192, 0.14) 75%,rgba(249, 249, 249,0.06) 75%, rgba(249, 249, 249,0.06) 100%),radial-gradient(circle at 49% 76%, rgba(96,210,238, 0.15) 0%, rgba(96,210,238, 0.15) 25%,rgba(184,255,255, 0.11) 25%, rgba(184,255,255, 0.11) 50%,rgba(200,200,200, 0) 50%, rgba(200,200,200, 0) 75%,rgba(235,235,235, 0) 75%, rgba(235,235,235, 0) 100%),radial-gradient(circle at 22% 64%, rgba(197,197,197, 0) 0%, rgba(197,197,197, 0) 25%,rgba(177,248,248, 0.1) 25%, rgba(177,248,248, 0.1) 50%,rgba(64,64,64, 0.03) 50%, rgba(64,64,64, 0.03) 75%,rgba(0,0,0, 0.11) 75%, rgba(0,0,0, 0.11) 100%),linear-gradient(307deg, rgb(171,228,255),rgb(171,228,255));
+    background-image: radial-gradient(circle at 85% 1%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 96%,transparent 96%, transparent 100%),radial-gradient(circle at 14% 15%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 1%,transparent 1%, transparent 100%),radial-gradient(circle at 60% 90%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 20%,transparent 20%, transparent 100%),radial-gradient(circle at 79% 7%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 78%,transparent 78%, transparent 100%),radial-gradient(circle at 55% 65%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 52%,transparent 52%, transparent 100%),linear-gradient(176deg, rgba(37,56,222, 0.08),rgb(96, 189, 244));
 }
 
 .footer {
@@ -121,7 +121,7 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
 .text-invalid {
@@ -136,7 +136,7 @@ header {
  width: 25px;
  height: 30px;
  font-size: 25px;
- color: #808080; 
+ color: #808080;
  margin-left: 20px;
  }
 
@@ -147,7 +147,7 @@ header {
  color: #e54747;
  margin-left: 20px;
  }
- 
+
 .no-decoration:hover {
   text-decoration: none;
 }
@@ -155,3 +155,7 @@ header {
 .large-text {
     font-size: 1.3em;
   }
+
+.custom-select select option[value=""] {
+  display: none;
+}

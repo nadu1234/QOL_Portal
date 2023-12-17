@@ -4,10 +4,10 @@
       <div class="mb-4" style="display: flex; gap: 20px;">
         <h2>カテゴリ</h2>
         <%= f.select :category, options_for_select(@categories.pluck(:category_name), @selected_category), prompt: '全て' %>
-      
         <h2>タグ</h2>
         <%= f.select :tags, options_for_select(@tags.pluck(:tag_name), @selected_tags), prompt: '全て' %>
-      
+        <h2>ソート</h2>
+        <%= f.select :sort_order, options_for_select([['新しい順', 'desc'], ['古い順', 'asc'], ['いいね数順', 'favorites'], ['コメント数順', 'comments']], selected: @sort_order || 'desc'), include_blank: false, class: 'custom-select' %>
         <%= f.submit 'フィルタ' %>
       </div>
     <% end %>
