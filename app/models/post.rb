@@ -21,6 +21,8 @@ class Post < ApplicationRecord
   scope :is_release, -> { where(is_release: true) } #公開のものだけを取得するクエリ
 
   scope :is_release_and_active, -> { joins(:user).merge(User.active).where(is_release: true) }
+  
+  scope :post_user_active, -> { joins(:user).merge(User.active) }
 
   scope :filter_by_category_and_tags, ->(category, tags) {
     joins(:category, :tags)

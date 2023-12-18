@@ -12,6 +12,7 @@ class Public::PostsController < ApplicationController
     @tags = @post.tags
     @comment = Comment.new
     @user = @post.user
+    # @rakuten_items = RakutenWebService::Ichiba::Item.search(keyword: '布団')
   end
   
   def edit
@@ -48,6 +49,7 @@ class Public::PostsController < ApplicationController
     post.destroy  
     redirect_to root_path
   end
+  
   
   private
   

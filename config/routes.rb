@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :users, only:[:show, :edit, :update, :leave] do
       member do
         patch :withdraw, to: 'users#withdraw', as: 'withdraw'
+        get :follows, :followers, :favorite
       end
       resource :relationships, only: [:create, :destroy]
     end

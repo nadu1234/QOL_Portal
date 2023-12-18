@@ -19,9 +19,19 @@
           <div>
           </div>
         <% end %>
+        <br>
         <div class="large-text">
           <%= @post.explanation %>
         </div>
+        
+        <!--<　% @rakuten_items.first(3).each do |item| %>-->
+        <!--  <tr>-->
+        <!--    <td><　%= image_tag item.medium_image_urls.first %></td>-->
+        <!--    <td><　%= item.url %></td>-->
+        <!--  </tr>-->
+        <!--<　% end %>-->
+        
+        
         
         <% if @post.user == current_user %>
           <div class="row justify-content-around">

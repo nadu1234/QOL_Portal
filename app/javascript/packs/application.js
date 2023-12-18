@@ -17,5 +17,5 @@ import "../stylesheets/application";
 import "script.js"
 require("./slick")
 Rails.start()
-// Turbolinks.start()
+Turbolinks.start()
 ActiveStorage.start()

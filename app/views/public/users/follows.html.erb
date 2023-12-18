@@ -1,0 +1,28 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row d-flex justify-content-center'>
+    <div class='col-sm-8 pt-4'>
+      <% if @users.present? %>
+        <% @users.each do |user| %>
+         <div class="media" style="background-image: repeating-linear-gradient(49deg, hsla(124,22%,97%,0.09) 0px, hsla(124,22%,97%,0.09) 1px,transparent 1px, transparent 11px),repeating-linear-gradient(139deg, hsla(124,22%,97%,0.09) 0px, hsla(124,22%,97%,0.09) 1px,transparent 1px, transparent 11px),linear-gradient(139deg, hsl(202,76%,66%),hsl(202,76%,66%)); padding: 5px; border-radius: 10px;">
+            <%= link_to(image_tag(user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(user.id)) %>
+            <div class="media-body">
+              <h5 class="mt-0"><%= link_to user.name, user_path(user) %>
+                <div style="display: flex; align-items: center;">
+                  <div id="follow_btn_<%= user.id %>">
+                    <%= render "public/relationships/follow_btn", user: user %>
+                  </div>
+                  <div id="follower_count">
+                    <%= render "public/relationships/count", user: user %>
+                  </div>
+                </div>
+              </h5>
+              <%= user.profile %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <h4>・フォローしたユーザーがいません</h4>
+      <% end %>
+    </div>
+  </div>
+</div>
