@@ -160,3 +160,56 @@ header {
 .custom-select select option[value=""] {
   display: none;
 }
+
+.button_on {
+  border-radius : 20px;          /* 角丸       */
+  font-size     : 8pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  box-sizing: border-box;
+  cursor        : pointer;     /* カーソル   */
+  padding       : 8px 12px;   /* 余白       */
+  background    : #a9a9a9;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid #d3d3d3;    /* 枠の指定 */
+}
+.button_on:hover {
+  color         : #ffffff;     /* 背景色     */
+  background    : #d3d3d3;     /* 文字色     */
+  text-decoration: none;
+}
+
+.button {
+  border-radius : 20px;          /* 角丸       */
+  font-size     : 8pt;        /* 文字サイズ */
+  box-sizing: border-box;
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 8px 12px;   /* 余白       */
+  color         : #000000;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  border        : 2px solid #d3d3d3;    /* 枠の指定 */
+}
+.button:hover {
+  color         : #ffffff;     /* 背景色     */
+  background    : #d3d3d3;     /* 文字色     */
+  text-decoration: none;
+}
+
+.box {
+  border-top: 3px solid #aaa;
+  border-bottom: 3px solid #aaa;
+  background-color: #eee;
+  padding: 0.3em;
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 480px) {
+   .post {
+   width: 75px;
+   }
+}

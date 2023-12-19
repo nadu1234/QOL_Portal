@@ -1,14 +1,20 @@
 <div class='container px-5 px-sm-0'>
   <div class='row d-flex justify-content-center'>
     <div class='col-sm-8 pt-4'>
-      <div class="media" style="background-image: repeating-linear-gradient(49deg, hsla(124,22%,97%,0.09) 0px, hsla(124,22%,97%,0.09) 1px,transparent 1px, transparent 11px),repeating-linear-gradient(139deg, hsla(124,22%,97%,0.09) 0px, hsla(124,22%,97%,0.09) 1px,transparent 1px, transparent 11px),linear-gradient(139deg, hsl(202,76%,66%),hsl(202,76%,66%)); padding: 5px; border-radius: 10px;">
-        <%= image_tag @user.get_profile_image, size:'100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; background-color: white;' %>
+      <div class="media py-2 px-2" style="border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41); background-color: white;">
+        <%= image_tag @user.get_profile_image, size:'100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; background-color: white; border: 1px solid #a9a9a9;' %>
         <div class="media-body">
           <h5 class="mt-0"><%= @user.name %>
           <div style="display: flex; align-items: center;">
-            <div id="follow_btn_<%= @user.id %>">
-              <%= render "public/relationships/follow_btn", user: @user %>
-            </div>
+            <% if current_user != @user %>
+              <div id="follow_btn_<%= @user.id %>">
+                <%= render "public/relationships/follow_btn", user: @user %>
+              </div>
+            <% else %>
+              <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
+                <i class="fas fa-user-cog"></i>
+              <% end %>
+            <% end %>
             <div id="follower_count">
               <%= render "public/relationships/count", user: @user %>
             </div>
@@ -23,11 +29,13 @@
             <div class="card">
               <div class="card-header">
                 <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-success" %>
-                <% if post.is_release? %>
-      						<span class="text-active">公開中</span>
-      					<% else %>
-      						<span class="text-invalid">非公開中</span>
-      					<% end %>
+                <% if post.user == current_user %>
+                  <% if post.is_release? %>
+        						<span class="text-active">公開中</span>
+        					<% else %>
+        						<span class="text-invalid">非公開中</span>
+        					<% end %>
+        				<% end %>
               </div>
               <div class="card-body">
                 <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">

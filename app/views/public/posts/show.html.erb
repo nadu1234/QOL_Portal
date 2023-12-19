@@ -1,7 +1,7 @@
 <div class="container py-5">
-  <h2 class="pb-5 ml-5"><%= @post.title %></h2>
-  <div class="row">
-    <div class="col-8" style="border-radius: 5%; background-color: white;">
+  <div class="row justify-content-around"><div class="box"><%= @post.title %></div></div>
+  <div class="row pt-3">
+    <div class="col-8" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
       <div class="py-3">
         <%= link_to @post.category.category_name, root_path(category: @post.category.category_name), class: "btn btn-sm btn-success" %>
           <p class="badge badge-light">
@@ -38,8 +38,8 @@
             <%= link_to "編集する", edit_post_path(@post.id),class: 'btn btn-success btn-lg' %>
           </div>
         <% end %>
-        
-        <div id="favorite_buttons_<%= @post.id %>">
+        <br>
+        <div id="favorite_buttons_<%= @post.id %>" class="row justify-content-center">
           <%= render "public/favorites/favorites", post: @post %>
         </div>
         <br>
@@ -56,17 +56,17 @@
       </div>
     </div>
     
-    <div class="col-3 offset-1" style="border-radius: 5%; background-color: white; height: 320px;">
+    <div class="col-3 offset-1" style="border-radius: 5%; background-color: white; height: 320px; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
       <div class="py-2" style="display: flex; align-items: center;">
         <%= link_to image_tag(@user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(@user) %>
         <div>
           <h3><%= link_to @user.name, user_path(@user) %></h3>
           <% if current_user != @user %>
-          <div id="follow_btn_<%= @user.id %>">
-            <%= render "public/relationships/follow_btn", user: @user %>
-          </div>
+            <div id="follow_btn_<%= @user.id %>">
+              <%= render "public/relationships/follow_btn", user: @user %>
+            </div>
           <% else %>
-            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block edit_user_#{@user.id}" do %>
+            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
               <i class="fas fa-user-cog"></i>
             <% end %>
           <% end %>

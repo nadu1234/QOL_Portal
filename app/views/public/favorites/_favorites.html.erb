@@ -2,14 +2,14 @@
   <% if post.favorites.exists?(user_id: current_user.id) %>
     <p>
       <%= link_to post_favorites_path(post), method: :delete , class: "no-decoration", remote: true do %>
-        <i class="far fa-heart like-btn" ></i>
+        <i class="fas fa-heart unlike-btn"></i>
       <% end %>
       <%= post.favorites.count %>
     </p>
-    <% else %>
+  <% else %>
     <p>
       <%= link_to post_favorites_path(post), method: :post, class: "no-decoration", remote: true do %>
-        <i class="fas fa-heart unlike-btn"></i>
+        <i class="far fa-heart like-btn" ></i>
       <% end %>
       <%= post.favorites.count %>
     </p>

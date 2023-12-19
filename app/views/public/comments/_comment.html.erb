@@ -3,8 +3,8 @@
     <% post.comments.each do |comment| %>
       <% if comment.user.is_active %>
         <tr>
-          <td><%= link_to user_path(comment.user.id) do %>
-            <%= image_tag comment.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden;  border: 1px solid #a9a9a9; background-color:#ffffff;' %><br>
+          <td style="text-align: center;"><%= link_to user_path(comment.user.id) do %>
+            <%= image_tag comment.user.get_profile_image, size:'30x30', style: 'border-radius: 50%; overflow: hidden;  border: 1px solid #a9a9a9; background-color:#ffffff;' %><br>
             <%= comment.user.name %>
           <% end %>
           </td>
@@ -13,7 +13,9 @@
           </td>
           <td>
             <% if comment.user == current_user %>
-              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
+              <%= link_to post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-danger", remote: true do %>
+                <i class="fa-solid fa-trash-can"></i>
+              <% end %>
             <% end %>
           </td>
         </tr>

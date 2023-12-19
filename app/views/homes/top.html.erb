@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center mt-4">
     <%= form_with(url: root_path, method: :get) do |f| %>
-      <div class="mb-4" style="display: flex; gap: 20px;">
+      <div class="mb-4" style="display: flex; gap: 20px; padding: 10px; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41); background-image: repeating-linear-gradient(135deg, rgba(189,189,189,0.1) 0px, rgba(189,189,189,0.1) 2px,transparent 2px, transparent 4px),linear-gradient(90deg, rgb(255,255,255),rgb(255,255,255));">
         <h2>カテゴリ</h2>
         <%= f.select :category, options_for_select(@categories.pluck(:category_name), @selected_category), prompt: '全て' %>
         <h2>タグ</h2>

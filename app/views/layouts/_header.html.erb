@@ -1,16 +1,16 @@
 <header style="border-bottom: 4mm ridge rgba(187, 187, 187, .41); background-color: #fff;" >
   <div class="container-fluid">
     <div class="row align-items-center">
-      <div class="col-md-2">
+      <div class="col-sm-2">
         <a class="navbar-brand pl-5" href="/"><%= image_tag 'f1006_4.png', size: '120x100' %></a>
       </div>
-      <div class="col-md-4 d-flex justify-content-end">
+      <div class="col-sm-4 d-flex justify-content-end welcom">
         <% if user_signed_in? %>
           <div>ようこそ、<%= current_user.name %>さん</div>
         <% end %>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <nav class="navbar navbar-expand-lg navbar-light">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
           <ul class="navbar-nav ml-auto">
   <!--userログイン時-->
           <% if user_signed_in? %>
-            <li style="background-color: #dcdcdc; padding: 5px; border-radius: 30px;">
+            <li class="post" style="background-color: #dcdcdc; padding: 5px; border-radius: 30px;">
               <%= link_to new_post_path, class: 'nav-link font-weight-bolder' do %>
                 <i class="fa-solid fa-circle-plus"></i> 投稿
               <% end %>
