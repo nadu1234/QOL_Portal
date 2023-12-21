@@ -1,21 +1,37 @@
-<div class='container'>
-<h3>タグ編集</h3>
-<% if @tag.errors.any? %>
-  <strong><%= @tag.errors.count %>件のエラーが出たので変更を保存できませんでした。</strong>
-  <ul>
-    <% @tag.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end%>
-  </ul>
-<% end %>
-<%= form_with model:@tag, url: admin_tag_path, method: :patch, local:true do |f| %>
-  <div class="form-group">
-    <%= f.label :tag_name, "タグ名" %>
-    <%= f.text_field :tag_name,  class: 'form-control', style: "width:30%" %>
+<div class='container pt-5'>
+  <div class="row d-flex justify-content-center">
+    <div class="col-6" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
+      <div class="py-3">
+        <h3>タグ編集</h3>
+
+
+        <% object = session[:error_message] %>
+        <% if !object.nil? %>
+            <div class="alert alert-danger">
+              <strong><%= object.count %>件のエラーが出たので変更を保存できませんでした。</strong>
+            <ul>
+            <% object.each do |msg| %>
+              <%# message.each do |msg| %>
+                <li><%= msg %></li>
+              <%# end %>
+            <% end %>
+            </ul>
+            </div>
+        <% end %>
+        <% session[:error_message] = nil %>
+
+        <%= form_with model: @tag, url: admin_tag_path(@tag), method: :patch, local: true do |f| %>
+          <div class="form-group">
+            <%= f.label :tag_name, "タグ名" %>
+            <%= f.text_field :tag_name, value: @tag_name, class: 'form-control', style: "width:30%" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "変更を保存", class: 'btn btn-outline-success' %>
+          </div>
+        <% end %>
+
+        <%= link_to "タグを削除", admin_tag_path(@tag.id), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.submit "変更を保存", class: 'btn btn-outline-success' %>
-  </div>
-<% end %>
-<%= link_to "タグを削除", admin_tag_path(@tag.id), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn btn-danger" %>
 </div>

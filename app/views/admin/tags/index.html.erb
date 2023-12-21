@@ -1,26 +1,34 @@
-<div class="container">
+<div class="container pt-5">
   
-  <h3>タグ一覧・追加</h3>
-    <% if @tag.errors.any? %>
-      <strong><%= @tag.errors.count %>件のエラーが出たので登録できませんでした。</strong>
-      <ul>
-        <% @tag.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end%>
-      </ul>
-    <% end %>
-  <br>
-  <br>
-  <div class='row'>
-    <%= form_with model:@tag, url: admin_tags_path, method: :post, local:true do |f| %>
-      <div class="form-group">
-        <%= f.label :tag_name, "タグ名" %>
-        <%= f.text_field :tag_name, placeholder: "タグ名",  class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.submit "新規登録", class: 'btn btn-outline-success' %>
-      </div>
-    <% end %>
+  <div class="row">
+    <div class="col-5 py-3" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
+      
+      <h3>タグ一覧・追加</h3>
+      <% object = session[:error_message] %>
+      <% if !object.nil? %>
+          <div class="alert alert-danger">
+            <strong><%= object.count %>件のエラーが出たので追加できませんでした。</strong>
+          <ul>
+          <% object.each do |msg| %>
+            <%# message.each do |msg| %>
+              <li><%= msg %></li>
+            <%# end %>
+          <% end %>
+          </ul>
+          </div>
+      <% end %>
+      <% session[:error_message] = nil %>
+  
+      <%= form_with model:@tag, url: admin_tags_path, method: :post, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :tag_name, "タグ名" %>
+          <%= f.text_field :tag_name, placeholder: "タグ名",  class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "新規登録", class: 'btn btn-outline-success' %>
+        </div>
+      <% end %>
+    </div>
   </div>
   
   <br>

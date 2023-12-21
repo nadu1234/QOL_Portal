@@ -8,6 +8,10 @@ ja:
         email: メールアドレス
       tag:
         tag_name: タグ名
+      post:
+        title: タイトル
+        category: カテゴリ
+        explanation: 説明
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

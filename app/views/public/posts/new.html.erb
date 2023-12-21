@@ -1,23 +1,22 @@
 <div class="container py-5">
 
-  <h2>記事投稿</h2>
-
-    <div class="row d-flex justify-content-center">
-      <div class="col-6">
-        <% if @post.errors.any? %>
-          <strong><%= @post.errors.count %>件のエラーが出たので登録できませんでした。</strong>
-          <ul>
-            <% @post.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end%>
-          </ul>
-        <% end %>
-      </div>
-    </div>
+  
+      
 
       <div class="row row-cols-1 d-flex justify-content-center">
         <div class="col-8" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
           <div class="py-3">
+            <h2>記事投稿</h2>
+            <% if @post.errors.any? %>
+              <div class="alert alert-danger">
+                <strong><%= @post.errors.count %>件のエラーが出たので投稿できませんでした。</strong>
+                <ul>
+                  <% @post.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end%>
+                </ul>
+              </div>
+            <% end %>
             <%= form_with model: @post, url: '/posts', method: :post do |f| %>
             <table class="table table-borderless">
               <tr>

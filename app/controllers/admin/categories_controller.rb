@@ -18,6 +18,7 @@ class Admin::CategoriesController < ApplicationController
   
   def edit
     @category = Category.find(params[:id])
+    @category_name = flash[:category_name] || @category.category_name
   end
   
   def update
@@ -25,7 +26,9 @@ class Admin::CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to admin_categories_path, notice: "カテゴリを変更しました。"
     else
-      render "edit"
+      session[:error_message] = @category.errors.full_messages
+      flash[:category_name] = @category.category_name
+      redirect_to edit_admin_category_path(@category)
     end
   end
   

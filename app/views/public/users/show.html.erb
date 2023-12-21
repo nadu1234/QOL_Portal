@@ -1,3 +1,4 @@
+<% extend Public::PostsHelper %>
 <div class='container px-5 px-sm-0'>
   <div class='row d-flex justify-content-center'>
     <div class='col-sm-8 pt-4'>
@@ -24,11 +25,12 @@
         </div>
       </div>
       <% @posts.each do |post| %>
+      <% category_color = determine_category_color(post.category.category_name) %>
         <% if user_signed_in? && (current_user.id == post.user.id || post.is_release) %>
           <div class="py-2">
-            <div class="card">
-              <div class="card-header">
-                <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-success" %>
+            <div class="card" style="border-color: <%= category_color %>;">
+              <div class="card-header" style="background-color: <%= category_color %>;">
+                <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-secondary" %>
                 <% if post.user == current_user %>
                   <% if post.is_release? %>
         						<span class="text-active">公開中</span>
@@ -58,9 +60,9 @@
         <% elsif !user_signed_in? && post.is_release %>
           <!-- ログインしていない場合には公開の投稿のみ表示 -->
           <div class="py-2">
-            <div class="card">
-              <div class="card-header">
-                <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-success" %>
+            <div class="card" style="border-color: <%= category_color %>;">
+              <div class="card-header" style="background-color: <%= category_color %>;">
+                <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-secondary" %>
               </div>
               <div class="card-body">
                 <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">

@@ -1,11 +1,14 @@
+<% extend Public::PostsHelper %>
+
 <% posts.each do |post| %>
+<% category_color = determine_category_color(post.category.category_name) %>
   <div class="col-sm-10 py-1">
-    <div class="card">
-      <div class="card-header">
-        <%= link_to post.category.category_name, root_path(category: post.category.category_name), class: "btn btn-sm btn-success" %>
+    <div class="card" style="border-color: <%= category_color %>;">
+      <div class="card-header" style="background-color: <%= category_color %>;">
+        <%= link_to post.category.category_name, root_path(category: post.category.category_name), class: "btn btn-sm btn-secondary" %>
         <%= link_to user_path(post.user.id) do %>
-          <%= image_tag post.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;' %>
-          <%= post.user.name %>
+          <%= image_tag post.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9; background-color: white;' %>
+          <span style="color: black;"><%= post.user.name %></span>
         <% end %>
       </div>
       <div class="card-body row align-items-center">
