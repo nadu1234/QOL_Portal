@@ -12,5 +12,6 @@
       </div>
     <% end %>
     <%= render "public/posts/index", posts: @posts %>
+    <div class="item__paginate"><%= paginate @posts %></div>
   </div>
 </div>

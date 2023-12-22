@@ -23,16 +23,16 @@
         <div class="large-text">
           <%= @post.explanation %>
         </div>
-        
+
         <!--<　% @rakuten_items.first(3).each do |item| %>-->
         <!--  <tr>-->
         <!--    <td><　%= image_tag item.medium_image_urls.first %></td>-->
         <!--    <td><　%= item.url %></td>-->
         <!--  </tr>-->
         <!--<　% end %>-->
-        
-        
-        
+
+
+
         <% if @post.user == current_user %>
           <div class="row justify-content-around">
             <%= link_to "編集する", edit_post_path(@post.id),class: 'btn btn-success btn-lg' %>
@@ -50,12 +50,12 @@
         <div id="comment_index">
           <%= render "public/comments/comment", post: @post %>
         </div>
-        
+
         <br>
           <%= render "public/comments/form", post: @post, comment: @comment, user: @user %>
       </div>
     </div>
-    
+
     <div class="col-3 offset-1" style="border-radius: 5%; background-color: white; height: 320px; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
       <div class="py-2" style="display: flex; align-items: center;">
         <%= link_to image_tag(@user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(@user) %>
@@ -76,7 +76,7 @@
       <%= @user.profile %>
       </p>
     </div>
-    
-    
+
+
   </div>
 </div>

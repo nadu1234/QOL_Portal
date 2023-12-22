@@ -1,28 +1,35 @@
 <div class='container px-5 px-sm-0'>
   <div class='row d-flex justify-content-center'>
-    <div class='col-sm-8 pt-4'>
+    
       <% if @users.present? %>
+      <div class='col-sm-5' style="display: flex; flex-direction: column; align-items: center; padding: 10px;">
+        <h2>フォロー一覧</h2>
+      </div>
         <% @users.each do |user| %>
-         <div class="media py-2 px-2" style="border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41); background-color: white;">
-            <%= link_to(image_tag(user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(user.id)) %>
-            <div class="media-body">
-              <h5 class="mt-0"><%= link_to user.name, user_path(user) %>
-                <div style="display: flex; align-items: center;">
-                  <div id="follow_btn_<%= user.id %>">
-                    <%= render "public/relationships/follow_btn", user: user %>
+          <div class='col-sm-8 pt-4'>
+           <div class="media py-2 px-2" style="border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41); background-color: white;">
+              <%= link_to(image_tag(user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(user.id)) %>
+              <div class="media-body">
+                <h5 class="mt-0"><%= link_to user.name, user_path(user) %>
+                  <div style="display: flex; align-items: center;">
+                    <div id="follow_btn_<%= user.id %>">
+                      <%= render "public/relationships/follow_btn", user: user %>
+                    </div>
+                    <div id="follower_count">
+                      <%= render "public/relationships/count", user: user %>
+                    </div>
                   </div>
-                  <div id="follower_count">
-                    <%= render "public/relationships/count", user: user %>
-                  </div>
-                </div>
-              </h5>
-              <%= user.profile %>
+                </h5>
+                <%= user.profile %>
+              </div>
             </div>
           </div>
+          
         <% end %>
+        <div class="item__paginate"><%= paginate @users %></div>
       <% else %>
         <h4>・フォローしたユーザーがいません</h4>
       <% end %>
-    </div>
+    
   </div>
 </div>

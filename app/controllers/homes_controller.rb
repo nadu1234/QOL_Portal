@@ -33,5 +33,10 @@ class HomesController < ApplicationController
     else
       @posts = @posts.order(created_at: :desc)
     end
+    @posts = @posts.page(params[:page]).per(8)
   end
+  
+  def about
+  end
+  
 end
