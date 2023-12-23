@@ -6,6 +6,17 @@
         <%= image_tag @user.get_profile_image, size:'100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; background-color: white; border: 1px solid #a9a9a9;' %>
         <div class="media-body">
           <h5 class="mt-0"><%= @user.name %>
+          <% if current_admin && current_admin.id == 1 %>
+            <br>
+            <%= link_to(
+              @user.is_active ? '有効ユーザー' : '無効ユーザー',
+              admin_user_path(@user),
+              method: :patch,
+              remote: true,
+              class: @user.is_active ? 'active-user' : 'inactive-user',
+              data: { confirm: @user.is_active ? '有効ユーザーを無効にしますか？' : '無効ユーザーを有効にしますか？' }
+            ) %>
+          <% end %>
           <div style="display: flex; align-items: center;">
             <% if current_user != @user %>
               <div id="follow_btn_<%= @user.id %>">

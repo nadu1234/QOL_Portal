@@ -49,6 +49,10 @@ class User < ApplicationRecord
     follow_user.include?(user)
   end
 
+  def toggle_active_status!
+    update_attribute(:is_active, !is_active)
+  end
+
   def get_profile_image
     (profile_image.attached?) ? profile_image : '人物のアイコン素材 その3.png'
   end

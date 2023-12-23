@@ -255,7 +255,21 @@ header {
   text-decoration:underline;
 }
 
+.active-user {
+  color: green;  /* 有効ユーザーの場合の文字色 */
+}
 
+.active-user:hover {
+  color: green;  /* 有効ユーザーの場合の文字色 */
+}
+
+.inactive-user {
+  color: #a9a9a9;    /* 無効ユーザーの場合の文字色 */
+}
+
+.inactive-user:hover {
+  color: #a9a9a9;    /* 無効ユーザーの場合の文字色 */
+}
 
 @media screen and (max-width: 480px) {
    .post {
