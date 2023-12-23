@@ -15,12 +15,12 @@
                     <div id="follow_btn_<%= user.id %>">
                       <%= render "public/relationships/follow_btn", user: user %>
                     </div>
-                    <div id="follower_count">
+                    <div id="follower_count_<%= user.id %>">
                       <%= render "public/relationships/count", user: user %>
                     </div>
                   </div>
                 </h5>
-                <%= user.profile %>
+                <%= safe_join(user.profile.split("\n"),tag(:br)) %>
               </div>
             </div>
           </div>

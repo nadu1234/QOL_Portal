@@ -21,7 +21,7 @@
         <% end %>
         <br>
         <div class="large-text">
-          <%= @post.explanation %>
+          <%= safe_join(@post.explanation.split("\n"),tag(:br)) %>
         </div>
 
         <!--<　% @rakuten_items.first(3).each do |item| %>-->
@@ -73,7 +73,7 @@
         </div>
       </div>
       <p style="overflow: auto; height: 200px;">
-      <%= @user.profile %>
+      <%= safe_join(@user.profile.split("\n"),tag(:br)) %>
       </p>
     </div>
 

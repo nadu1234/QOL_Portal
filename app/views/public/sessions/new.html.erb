@@ -4,6 +4,7 @@
       <div class="py-3">
         <h2>ログイン</h2>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
           <div class="field">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control-file" %>

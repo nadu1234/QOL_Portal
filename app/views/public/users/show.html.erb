@@ -27,12 +27,12 @@
                 <i class="fas fa-user-cog"></i>
               <% end %>
             <% end %>
-            <div id="follower_count">
+            <div id="follower_count_<%= @user.id %>">
               <%= render "public/relationships/count", user: @user %>
             </div>
           </div>
           </h5>
-          <%= @user.profile %>
+          <%= safe_join(@user.profile.split("\n"),tag(:br)) %>
         </div>
       </div>
       <% @posts.each do |post| %>

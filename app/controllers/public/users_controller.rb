@@ -37,7 +37,7 @@ class Public::UsersController < ApplicationController
 
   def followers
     user = User.find(params[:id])
-    @usera = user.follower_user.active.page(params[:page]).per(8)
+    @users = user.follower_user.active.page(params[:page]).per(8)
   end
 
   private

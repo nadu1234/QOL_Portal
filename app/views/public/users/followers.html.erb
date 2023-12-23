@@ -2,7 +2,7 @@
   <div class='row d-flex justify-content-center'>
       <% if @users.present? %>
       <div class='col-sm-5' style="display: flex; flex-direction: column; align-items: center; padding: 10px;">
-        <h2>フォロー一覧</h2>
+        <h2>フォロワー一覧</h2>
       </div>
         <% @users.each do |user| %>
         <div class='col-sm-8 pt-4'>
@@ -14,12 +14,12 @@
                   <div id="follow_btn_<%= user.id %>">
                     <%= render "public/relationships/follow_btn", user: user %>
                   </div>
-                  <div id="follower_count">
+                  <div id="follower_count_<%= user.id %>">
                     <%= render "public/relationships/count", user: user %>
                   </div>
                 </div>
               </h5>
-              <%= user.profile %>
+              <%= safe_join(user.profile.split("\n"),tag(:br)) %>
             </div>
           </div>
         </div>
