@@ -217,7 +217,7 @@ header {
 .pagination{
   text-align: center;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 }
 
 /* ページネーションのspan */
@@ -271,8 +271,215 @@ header {
   color: #a9a9a9;    /* 無効ユーザーの場合の文字色 */
 }
 
-@media screen and (max-width: 480px) {
-   .post {
-   width: 75px;
-   }
+.font {
+  font-size: 60px; /* 適切なフォントサイズに設定 */
+  font-family: 'Garamond';
+  font-weight: bold;
+}
+
+.font-weight-bolder {
+  font-size: 20px;
+  font-family: 'SimSun';
+}
+
+.post  {
+  background-color: #dcdcdc;
+  padding: 5px;
+  border-radius: 30px;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .col-sm-2,
+  .col-sm-4,
+  .col-sm-6 {
+    flex-basis: 100%;
+  }
+
+  .welcom {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .navbar-toggler {
+    margin: 0;
+    padding: 0.25rem 0.75rem;
+  }
+
+  .navbar-collapse {
+    background-color: #fff;
+  }
+
+  .navbar-nav {
+    margin-top: 10px;
+  }
+
+  .search-form {
+    margin-top: 10px;
+  }
+
+  .search-input,
+  .search-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .mb-4 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .responsive {
+    padding-top: 150px;
+  }
+
+  h2 {
+    margin-top: 10px;
+  }
+
+  select, .custom-select {
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .item__paginate {
+    margin-top: 20px;
+  }
+
+  .col-sm-10 {
+    flex-basis: 100%;
+  }
+
+  .card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(187, 187, 187, 0.41);
+  }
+
+  .card-body {
+    padding: 10px;
+  }
+
+  .col-1 {
+    flex-basis: 30%;
+  }
+
+  .col-3 {
+    flex-basis: 70%;
+  }
+
+  .badge {
+    margin-bottom: 5px;
+  }
+
+  .card {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid rgba(187, 187, 187, 0.41);
+  }
+
+  /* カードヘッダーのスタイル */
+  .card-header {
+    background-color: #333;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  /* カテゴリボタンのスタイル */
+  .card-header a.btn {
+    margin-right: 10px;
+  }
+
+  /* プロフィール画像のスタイル */
+  .card-header img {
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    border: 1px solid #a9a9a9;
+    background-color: white;
+  }
+
+  /* カードボディのスタイル */
+  .card-body {
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+  }
+
+  /* タイトルのスタイル */
+  .col-3 h2 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+
+  /* 投稿画像のスタイル */
+  .col-1 img {
+    width: 100px;
+    border-radius: 5%;
+    overflow: hidden;
+    background-color: white;
+  }
+
+  /* タグのスタイル */
+  .badge {
+    margin-right: 5px;
+  }
+
+  /* いいね数、コメント数のスタイル */
+  .badge-primary {
+    margin-top: 5px;
+  }
+
+  .profile-info {
+    padding-top: 5px;
+  }
+
+  .col-sm-8 {
+    text-align: center; 
+  }
+
+  .font {
+    font-size: 25px; 
+    font-weight: bold;
+  }
+
+  .font-weight-bolder {
+    font-size: 14px; 
+    font-family: 'SimSun';
+  }
+
+  .br::after {
+    content: "\A";
+    white-space: pre;
+  }
+  
+  .post {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .special-li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mypage-btn-container{
+    width: auto;
+  }
+  
+  .navbar-brand img {
+    width: 60px;
+    height: 50px;
+  }
+  
+  
 }

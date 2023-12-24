@@ -4,7 +4,7 @@
       <div class="col-sm-2">
         <a class="navbar-brand pl-5" href="/"><%= image_tag 'f1006_4.png', size: '120x100' %></a>
       </div>
-      <div class="col-sm-4 d-flex justify-content-end welcom">
+      <div class="col-sm-4 d-flex justify-content-end custom-centered-col">
         <% if user_signed_in? %>
           <div>ようこそ、<%= current_user.name %>さん</div>
         <% end %>
@@ -19,12 +19,12 @@
           <ul class="navbar-nav ml-auto">
   <!--userログイン時-->
           <% if user_signed_in? %>
-            <li class="post" style="background-color: #dcdcdc; padding: 5px; border-radius: 30px;">
+            <li class="post">
               <%= link_to new_post_path, class: 'nav-link font-weight-bolder' do %>
                 <i class="fa-solid fa-circle-plus"></i> 投稿
               <% end %>
             </li>
-            <li>
+            <li class="special-li">
               <div class="mypage-btn-container" id="mypageBtnContainer">
                 <div class="mx-4"><%= image_tag current_user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden; background-color:#ffffff; border: 2px solid #a9a9a9;' %></div>
                 <div class="mypage-dropdown" id="mypageDropdown">

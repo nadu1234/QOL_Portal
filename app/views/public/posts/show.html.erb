@@ -1,7 +1,7 @@
 <div class="container py-5">
   <div class="row justify-content-around"><div class="box"><%= @post.title %></div></div>
-  <div class="row pt-3">
-    <div class="col-8" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
+  <div class="row pt-3 bottom-container">
+    <div class="col-sm-8" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
       <div class="py-3">
         <%= link_to @post.category.category_name, root_path(category: @post.category.category_name), class: "btn btn-sm btn-success" %>
           <p class="badge badge-light">
@@ -56,7 +56,7 @@
       </div>
     </div>
 
-    <div class="col-3 offset-1" style="border-radius: 5%; background-color: white; height: 320px; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
+    <div class="col-sm-3 offset-sm-1 profile-info" style="border-radius: 5%; background-color: white; height: 320px; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
       <div class="py-2" style="display: flex; align-items: center;">
         <%= link_to image_tag(@user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(@user) %>
         <div>

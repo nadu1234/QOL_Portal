@@ -51,13 +51,15 @@
         				<% end %>
               </div>
               <div class="card-body row align-items-center">
-                <div class="col-3 text-left">
+                <div class="col-sm-3 text-left">
                   <h2><%= link_to post.title, post_path(post.id) %></h2>
                 </div>
-                <div class="col-1 text-center">
-                  <%= image_tag post.get_post_image, size:'140x100', style: 'border-radius: 5%; overflow: hidden; background-color: white; margin-right: 200px;' %>
+                <div class="col-sm-1 text-center">
+                  <%= link_to post_path(post.id) do %>
+                    <%= image_tag post.get_post_image, size: '140x100', style: 'border-radius: 5%; overflow: hidden; background-color: white; margin-right: px;' %>
+                  <% end %>
                 </div>
-                <div class="col text-right">
+                <div class="col-sm text-right">
                   <p class="badge badge-light">
                     <% post.tags.each do |t| %>
                       <%= link_to "##{t.tag_name}", root_path %>
@@ -81,13 +83,15 @@
                 <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-secondary" %>
               </div>
               <div class="card-body row align-items-center">
-                <div class="col-3 text-left">
+                <div class="col-sm-3 text-left">
                   <h2><%= link_to post.title, post_path(post.id) %></h2>
                 </div>
-                <div class="col-1 text-center">
-                  <%= image_tag post.get_post_image, size:'140x100', style: 'border-radius: 5%; overflow: hidden; background-color: white; margin-right: 200px;' %>
+                <div class="col-sm-1 text-center">
+                  <%= link_to post_path(post.id) do %>
+                    <%= image_tag post.get_post_image, size: '140x100', style: 'border-radius: 5%; overflow: hidden; background-color: white; margin-right: px;' %>
+                  <% end %>
                 </div>
-                <div class="col text-right">
+                <div class="col-sm text-right">
                   <p class="badge badge-light">
                     <% post.tags.each do |t| %>
                       <%= link_to "##{t.tag_name}", root_path %>
