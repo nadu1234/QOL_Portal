@@ -14,22 +14,22 @@
  *= require_self
  */
 .custom-link i {
-    color: #87cefa; /* 通常のアイコン色 */
+  color: #87cefa; /* 通常のアイコン色 */
 }
 
 .custom-link:hover i {
-    color: #1e90ff; /* ホバー時のアイコン色 */
+  color: #1e90ff; /* ホバー時のアイコン色 */
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-image: radial-gradient(circle at 85% 1%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 96%,transparent 96%, transparent 100%),radial-gradient(circle at 14% 15%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 1%,transparent 1%, transparent 100%),radial-gradient(circle at 60% 90%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 20%,transparent 20%, transparent 100%),radial-gradient(circle at 79% 7%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 78%,transparent 78%, transparent 100%),radial-gradient(circle at 55% 65%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 52%,transparent 52%, transparent 100%),linear-gradient(176deg, rgba(37,56,222, 0.08),rgb(96, 189, 244));
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: radial-gradient(circle at 85% 1%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 96%,transparent 96%, transparent 100%),radial-gradient(circle at 14% 15%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 1%,transparent 1%, transparent 100%),radial-gradient(circle at 60% 90%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 20%,transparent 20%, transparent 100%),radial-gradient(circle at 79% 7%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 78%,transparent 78%, transparent 100%),radial-gradient(circle at 55% 65%, hsla(190,0%,93%,0.05) 0%, hsla(190,0%,93%,0.05) 52%,transparent 52%, transparent 100%),linear-gradient(176deg, rgba(37,56,222, 0.08),rgb(96, 189, 244));
 }
 
 .footer {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 .slider .slick-slide.slick-center {
@@ -154,8 +154,8 @@ header {
 }
 
 .large-text {
-    font-size: 1.3em;
-  }
+  font-size: 1.3em;
+}
 
 .custom-select select option[value=""] {
   display: none;
@@ -277,7 +277,7 @@ header {
   font-weight: bold;
 }
 
-.font-weight-bolder {
+.about_text {
   font-size: 20px;
   font-family: 'SimSun';
 }
@@ -287,6 +287,24 @@ header {
   padding: 5px;
   border-radius: 30px;
   height: auto;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  border: 1px solid #a9a9a9;
+}
+
+.tag-badge {
+  margin: 1px 2px;
+  font-size: 18px !important;
 }
 
 @media (max-width: 768px) {
@@ -450,7 +468,7 @@ header {
     font-weight: bold;
   }
 
-  .font-weight-bolder {
+  .about_text {
     font-size: 14px; 
     font-family: 'SimSun';
   }
@@ -479,6 +497,60 @@ header {
   .navbar-brand img {
     width: 60px;
     height: 50px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .right-align {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .center-logo {
+    text-align: center;
+    margin-left: -16px;
+  }
+
+  .center-logo .navbar-brand {
+    display: inline-block;
+  }
+  
+  
+  .navbar {
+    text-align: center;
+  }
+
+  .navbar-toggler {
+    margin: 0 auto;
+  }
+
+  .navbar-nav {
+    justify-content: center;
+  }
+  
+  .slider img {
+    height: 130px;
+  }
+  
+  .button_on {
+    font-size     : 4pt;        /* 文字サイズ */
+    padding       : 4px 6px;   /* 余白       */
+  }
+  
+  .button {
+    font-size     : 4pt;        /* 文字サイズ */
+    padding       : 4px 6px;   /* 余白       */
+  }
+  
+  .profile-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .pt-5 {
+    margin-top: -48px;
   }
   
   

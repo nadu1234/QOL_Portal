@@ -1,4 +1,4 @@
-<div class='container px-5 px-sm-0'>
+<div class='container px-sm-0'>
   <div class='row d-flex justify-content-center'>
       <% if @users.present? %>
       <div class='col-sm-5' style="display: flex; flex-direction: column; align-items: center; padding: 10px;">
@@ -7,7 +7,7 @@
         <% @users.each do |user| %>
         <div class='col-sm-8 pt-4'>
          <div class="media py-2 px-2" style="border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41); background-color: white;">
-            <%= link_to(image_tag(user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(user.id)) %>
+            <%= link_to(image_tag(user.get_profile_image, class: 'profile-image'), user_path(user.id)) %>
             <div class="media-body">
               <h5 class="mt-0"><%= link_to user.name, user_path(user) %>
                 <div style="display: flex; align-items: center;">

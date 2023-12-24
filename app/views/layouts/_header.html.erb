@@ -1,12 +1,12 @@
 <header style="border-bottom: 4mm ridge rgba(187, 187, 187, .41); background-color: #fff;" >
   <div class="container-fluid">
     <div class="row align-items-center">
-      <div class="col-sm-2">
+      <div class="col-sm-2 center-logo">
         <a class="navbar-brand pl-5" href="/"><%= image_tag 'f1006_4.png', size: '120x100' %></a>
       </div>
-      <div class="col-sm-4 d-flex justify-content-end custom-centered-col">
+      <div class="col-sm-4 right-align">
         <% if user_signed_in? %>
-          <div>ようこそ、<%= current_user.name %>さん</div>
+          ようこそ、<%= current_user.name %>さん
         <% end %>
       </div>
 
@@ -43,7 +43,7 @@
           <% elsif admin_signed_in? %>
             <li>
               <%= link_to admin_users_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-layer-group"></i> ユーザー
+                <i class="fa-solid fa-user"></i> ユーザー
               <% end %>
             </li>
             <li>

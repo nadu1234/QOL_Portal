@@ -1,7 +1,7 @@
 <div class="container pt-5">
   
   <div class="row">
-    <div class="col-5 py-3" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
+    <div class="col-sm-5 py-3" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
       
       <h3>タグ一覧・追加</h3>
       <% object = session[:error_message] %>
@@ -32,9 +32,10 @@
   </div>
   
   <br>
-  <div class="d-flex flex-row">
+  
+  <div class="col-sm">
     <% @tags.each do |tag| %>
-      <p class="mx-2 my-1 badge badge-secondary" style="font-size: 20px;">
+      <p class="badge badge-secondary tag-badge">
         #<%= tag.tag_name %>
         <%= link_to  edit_admin_tag_path(tag.id), method: :get, class: "custom-link" do %>
           <i class="fa-solid fa-pen"></i>
