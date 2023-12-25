@@ -41,7 +41,7 @@
             </li>
   <!--adminログイン時-->
           <% elsif admin_signed_in? %>
-            <ul class="navbar-nav flex-column">
+            <ul class="navbar-nav custom_row">
               <li>
                 <%= link_to admin_users_path, class: 'nav-link font-weight-bolder custom_link' do %>
                   <i class="fa-solid fa-user"></i> ユーザー

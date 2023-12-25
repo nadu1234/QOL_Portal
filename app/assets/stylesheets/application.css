@@ -605,4 +605,13 @@ header {
     padding-top: 20px;
   }
 
+  .flash_erase {
+    margin-top: -40px!important;
+  }
+
+  .custom_row {
+    display: flex;
+    flex-direction: column!important;
+  }
+
 }

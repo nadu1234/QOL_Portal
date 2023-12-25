@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   # has_one_attached :middle_image
   # has_one_attached :bottom_image
 
-  validates :title,presence:true
+  validates :title,presence:true, length: { maximum: 10 }
   validates :explanation,presence:true#,length:{maximum:200}
   #validates :body_middle,length:{maximum:200}
   #validates :body_bottom,length:{maximum:200}

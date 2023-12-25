@@ -21,6 +21,7 @@ class Admin::TagsController < ApplicationController
   def edit
     @tag = Tag.find(params[:id])
     @tag_name = flash[:tag_name] || @tag.tag_name
+    @has_flash_message = flash.present? #フラッシュメッセージを力技で隠すために設置
   end
 
   def update

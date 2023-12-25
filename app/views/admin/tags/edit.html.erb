@@ -1,4 +1,7 @@
 <div class='container pt-5'>
+<% if @has_flash_message %>
+  <div class="flash_erase"></div><!--フラッシュメッセージを力技で隠すために設置-->
+<% end %>
   <div class="row d-flex justify-content-center">
     <div class="col-sm-6" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
       <div class="py-3">
