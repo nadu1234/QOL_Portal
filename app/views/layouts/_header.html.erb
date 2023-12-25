@@ -41,40 +41,42 @@
             </li>
   <!--adminログイン時-->
           <% elsif admin_signed_in? %>
-            <li>
-              <%= link_to admin_users_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-user"></i> ユーザー
-              <% end %>
-            </li>
-            <li>
-              <%= link_to admin_categories_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-layer-group"></i> カテゴリ
-              <% end %>
-            </li>
-            <li>
-              <%= link_to admin_tags_path, class: 'nav-link font-weight-bolder' do %>
-                <i class="fa-solid fa-tags"></i> タグ
-              <% end %>
-            </li>
-            <li>
-              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link font-weight-bolder' do %>
-                <i class="fas fa-sign-out-alt"></i> ログアウト
-              <% end %>
-            </li>
+            <ul class="navbar-nav flex-column">
+              <li>
+                <%= link_to admin_users_path, class: 'nav-link font-weight-bolder custom_link' do %>
+                  <i class="fa-solid fa-user"></i> ユーザー
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_categories_path, class: 'nav-link font-weight-bolder custom_link' do %>
+                  <i class="fa-solid fa-layer-group"></i> カテゴリ
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_tags_path, class: 'nav-link font-weight-bolder custom_link' do %>
+                  <i class="fa-solid fa-tags"></i> タグ
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link font-weight-bolder custom_link' do %>
+                  <i class="fas fa-sign-out-alt"></i> ログアウト
+                <% end %>
+              </li>
+            </ul>
   <!--ログアウト時-->
           <% else %>
             <li>
-              <%= link_to users_guest_sign_in_path, class: "nav-link font-weight-bolder", method: :post  do %>
+              <%= link_to users_guest_sign_in_path, class: "nav-link font-weight-bolder custom_link", method: :post  do %>
                 <i class="fa-solid fa-key"></i> ゲストログイン
               <% end %>
             </li>
             <li>
-              <%= link_to new_user_registration_path, class: 'nav-link font-weight-bolder' do %>
+              <%= link_to new_user_registration_path, class: 'nav-link font-weight-bolder custom_link' do %>
                 <i class="fa-solid fa-pen"></i> 新規登録
               <% end %>
             </li>
             <li>
-              <%= link_to new_user_session_path, class: 'nav-link font-weight-bolder' do %>
+              <%= link_to new_user_session_path, class: 'nav-link font-weight-bolder custom_link' do %>
                 <i class="fas fa-sign-in-alt"></i> ログイン
               <% end %>
             </li>

@@ -134,19 +134,19 @@ header {
 }
 
 .like-btn {
- width: 25px;
- height: 30px;
- font-size: 25px;
- color: #808080;
- margin-left: 20px;
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #808080;
+  margin-left: 20px;
  }
 
 .unlike-btn {
- width: 25px;
- height: 30px;
- font-size: 25px;
- color: #e54747;
- margin-left: 20px;
+  width: 25px;
+  height: 30px;
+  font-size: 25px;
+  color: #e54747;
+  margin-left: 20px;
  }
 
 .no-decoration:hover {
@@ -314,7 +314,14 @@ header {
   padding-bottom: 2px;
 }
 
-
+.custom_filter {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2mm ridge rgba(187, 187, 187, .41);
+  background-image: repeating-linear-gradient(135deg, rgba(189, 189, 189, 0.1) 0px, rgba(189, 189, 189, 0.1) 2px, transparent 2px, transparent 4px), linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
+}
 
 
 @media (max-width: 768px) {
@@ -348,6 +355,7 @@ header {
   .navbar-nav {
     margin-top: 10px;
     flex-direction: row!important;
+    justify-content: center;
   }
 
   .search-form {
@@ -538,10 +546,6 @@ header {
     margin: 0 auto;
   }
 
-  .navbar-nav {
-    justify-content: center;
-  }
-
   .slider img {
     height: 130px;
   }
@@ -572,6 +576,28 @@ header {
   .custom_search {
     justify-content: center;
     padding-right: 0;
+  }
+
+  .custom_link{
+    font-size     : 10pt;        /* 文字サイズ */
+    padding: 5px!important
+  }
+
+  .admin-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-nav li {
+    margin-bottom: 8px; /* 必要に応じてスペーシングを調整してください */
+  }
+
+  .admin-nav li a {
+    display: block;
+  }
+  
+  .custom_filter {
+    gap: 5px;
   }
 
 }
