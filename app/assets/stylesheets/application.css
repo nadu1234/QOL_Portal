@@ -492,7 +492,8 @@ header {
     font-family: 'SimSun';
   }
 
-  .br::after {
+  .br {
+    display: block;
     content: "\A";
     white-space: pre;
   }
@@ -598,6 +599,10 @@ header {
   
   .custom_filter {
     gap: 5px;
+  }
+
+  .responsive_top {
+    padding-top: 20px;
   }
 
 }
