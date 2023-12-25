@@ -307,6 +307,16 @@ header {
   font-size: 18px !important;
 }
 
+.custom_search {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+  padding-bottom: 2px;
+}
+
+
+
+
 @media (max-width: 768px) {
   .container-fluid {
     padding-right: 15px;
@@ -337,6 +347,7 @@ header {
 
   .navbar-nav {
     margin-top: 10px;
+    flex-direction: row!important;
   }
 
   .search-form {
@@ -355,7 +366,7 @@ header {
   }
 
   .responsive {
-    padding-top: 150px;
+    padding-top: 130px;
   }
 
   h2 {
@@ -460,16 +471,16 @@ header {
   }
 
   .col-sm-8 {
-    text-align: center; 
+    text-align: center;
   }
 
   .font {
-    font-size: 25px; 
+    font-size: 25px;
     font-weight: bold;
   }
 
   .about_text {
-    font-size: 14px; 
+    font-size: 14px;
     font-family: 'SimSun';
   }
 
@@ -477,23 +488,24 @@ header {
     content: "\A";
     white-space: pre;
   }
-  
+
   .post {
     display: flex;
     align-items: center;
     justify-content: center;
+    width :100px;
   }
-  
+
   .special-li {
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
   .mypage-btn-container{
     width: auto;
   }
-  
+
   .navbar-brand img {
     width: 60px;
     height: 50px;
@@ -501,13 +513,13 @@ header {
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .right-align {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   .center-logo {
     text-align: center;
     margin-left: -16px;
@@ -516,8 +528,8 @@ header {
   .center-logo .navbar-brand {
     display: inline-block;
   }
-  
-  
+
+
   .navbar {
     text-align: center;
   }
@@ -529,29 +541,37 @@ header {
   .navbar-nav {
     justify-content: center;
   }
-  
+
   .slider img {
     height: 130px;
   }
-  
+
   .button_on {
     font-size     : 4pt;        /* 文字サイズ */
     padding       : 4px 6px;   /* 余白       */
   }
-  
+
   .button {
     font-size     : 4pt;        /* 文字サイズ */
     padding       : 4px 6px;   /* 余白       */
   }
-  
+
   .profile-image {
     width: 50px;
     height: 50px;
   }
-  
+
   .pt-5 {
     margin-top: -48px;
   }
-  
-  
+
+  .custom_text {
+    font-size     : 7pt;        /* 文字サイズ */
+  }
+
+  .custom_search {
+    justify-content: center;
+    padding-right: 0;
+  }
+
 }

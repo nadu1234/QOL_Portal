@@ -58,7 +58,7 @@
 
     <div class="col-sm-3 offset-sm-1 profile-info" style="border-radius: 5%; background-color: white; height: 320px; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
       <div class="py-2" style="display: flex; align-items: center;">
-        <%= link_to image_tag(@user.get_profile_image, size: '100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9;'), user_path(@user) %>
+        <%= link_to(image_tag(@user.get_profile_image, class: 'profile-image'), user_path(@user.id)) %>
         <div>
           <h3><%= link_to @user.name, user_path(@user) %></h3>
           <% if current_user != @user %>

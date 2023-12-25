@@ -1,9 +1,9 @@
 <% extend Public::PostsHelper %>
-<div class='container px-5 px-sm-0'>
-  <div class='row d-flex justify-content-center'>
+<div class='container px-sm-0'>
+  <div class='row justify-content-center'>
     <div class='col-sm-10 pt-4'>
       <div class="media py-2 px-2" style="border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41); background-color: white;">
-        <%= image_tag @user.get_profile_image, size:'100x100', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; background-color: white; border: 1px solid #a9a9a9;' %>
+        <%= image_tag @user.get_profile_image, class: 'profile-image' %>
         <div class="media-body">
           <h5 class="mt-0"><%= @user.name %>
           <% if current_admin && current_admin.id == 1 %>
