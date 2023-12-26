@@ -20,9 +20,15 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user = User.find_by(id: params[:id])
-    @user.update(is_active: false)
-    reset_session
-    redirect_to root_path
+    if @user.email == "guest@example.com"
+      flash[:notice] = "ゲストユーザーは退会できません。"
+      redirect_to root_path
+    else
+      @user.update(is_active: false)
+      reset_session
+      flash[:notice] = "退会されました。"
+      redirect_to root_path
+    end
   end
 
   def favorite
