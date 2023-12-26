@@ -62,7 +62,7 @@
                 <div class="col-sm text-right">
                   <p class="badge badge-light">
                     <% post.tags.each do |t| %>
-                      <%= link_to "##{t.tag_name}", root_path %>
+                      <%= link_to "##{t.tag_name}", root_path(tags: t.tag_name) %>
                     <% end %>
                   </p>
                   <p class="badge badge-pill badge-primary">
@@ -94,7 +94,7 @@
                 <div class="col-sm text-right">
                   <p class="badge badge-light">
                     <% post.tags.each do |t| %>
-                      <%= link_to "##{t.tag_name}", root_path %>
+                      <%= link_to "##{t.tag_name}", root_path(tags: t.tag_name) %>
                     <% end %>
                   </p>
                   <p class="badge badge-pill badge-primary">
@@ -113,4 +113,3 @@
       </div>
     </div>
   </div>
-  
