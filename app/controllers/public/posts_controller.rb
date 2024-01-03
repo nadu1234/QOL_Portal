@@ -24,6 +24,18 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    if post_params[:post_images].present?
+      post_params[:post_images].each do |image|
+        result = Vision.images_analysis(image)
+        if result == false
+          flash.now[:alert] = "画像が不適切です。最初から入力して下さい。"
+          @categories = Category.all
+          @tags = Tag.all
+          render :new
+          return
+        end
+      end
+    end
     if @post.save
       redirect_to post_path(@post)
     else
@@ -35,6 +47,18 @@ class Public::PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
+    if post_params[:post_images].present?
+      post_params[:post_images].each do |image|
+        result = Vision.images_analysis(image)
+        if result == false
+          flash.now[:alert] = "画像が不適切です。更新できません。"
+          @categories = Category.all
+          @tags = Tag.all
+          render "edit"
+          return
+        end
+      end
+    end
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
