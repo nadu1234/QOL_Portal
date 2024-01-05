@@ -18,10 +18,14 @@ class Post < ApplicationRecord
   #validates :body_middle,length:{maximum:200}
   #validates :body_bottom,length:{maximum:200}
 
+  # validate :validate_images
+
+
+
   scope :is_release, -> { where(is_release: true) } #公開のものだけを取得するクエリ
 
   scope :is_release_and_active, -> { joins(:user).merge(User.active).where(is_release: true) }
-  
+
   scope :post_user_active, -> { joins(:user).merge(User.active) }
 
   scope :filter_by_category_and_tags, ->(category, tags) {
@@ -42,7 +46,7 @@ class Post < ApplicationRecord
       .where(tags: { tag_name: tags })
       .distinct
   }
-  
+
   scope :order_by_favorites, -> {
     left_joins(:favorites)
       .group('posts.id')
@@ -54,8 +58,8 @@ class Post < ApplicationRecord
       .group('posts.id')
       .order('COUNT(comments.id) DESC')
   }
-  
-  
+
+
   def get_post_image
     if post_images.attached? && post_images.first.present?
       post_images.first
@@ -70,5 +74,15 @@ class Post < ApplicationRecord
     end
   end
 
+  # def validate_images
+  #   return unless post_images.attached?
+
+  #   post_images.each do |image|
+  #     result = Vision.images_analysis(image)
+  #     if result == false
+  #       errors.add(:base, "不適切な画像が検出されました。適切な画像をアップロードしてください。")
+  #     end
+  #   end
+  # end
 
 end

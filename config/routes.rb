@@ -27,7 +27,10 @@ Rails.application.routes.draw do
     end
     resources :posts, only:[:new, :show, :edit, :create, :update, :destroy] do
       resource :favorites, only:[:create, :destroy]
-      resources :comments, only:[:create, :destroy]
+      resources :comments, only:[:create, :destroy] do
+        post 'create_reply', on: :member
+      end
+      
     end
     resources :relationships, only:[:create, :destroy]
     resources :tags, only: [:show]
