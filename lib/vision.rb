@@ -7,7 +7,7 @@ module Vision
     def images_analysis(image_file)
 
       api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV["GOOGLE_API_KEY"]}"
-      
+
       base64_image = Base64.encode64(image_file.tempfile.read)
 
       params = {
@@ -30,10 +30,9 @@ module Vision
       request["Content-Type"] = "application/json"
       response = https.request(request, params)
       result = JSON.parse(response.body)
-
       if (error = result["responses"][0]["error"]).present?
         raise error["message"]
-      elsif
+      else
         result_arr = result["responses"].flatten.map do |parsed_image|
           parsed_image["safeSearchAnnotation"].values
         end.flatten
@@ -46,3 +45,4 @@ module Vision
     end
   end
 end
+

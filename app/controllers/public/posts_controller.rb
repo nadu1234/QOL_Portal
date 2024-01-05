@@ -27,8 +27,8 @@ class Public::PostsController < ApplicationController
     if post_params[:post_images].present?
       post_params[:post_images].each do |image|
         result = Vision.images_analysis(image)
-        if result == false
-          flash.now[:alert] = "画像が不適切です。最初から入力して下さい。"
+        unless result
+          @post.errors.add(:base, "不適切な画像が検出されたので投稿できません。")
           @categories = Category.all
           @tags = Tag.all
           render :new
@@ -47,11 +47,12 @@ class Public::PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
+  
     if post_params[:post_images].present?
       post_params[:post_images].each do |image|
         result = Vision.images_analysis(image)
-        if result == false
-          flash.now[:alert] = "画像が不適切です。更新できません。"
+        unless result
+          @post.errors.add(:base, "不適切な画像が検出さたので保存できません。")
           @categories = Category.all
           @tags = Tag.all
           render "edit"
@@ -59,6 +60,7 @@ class Public::PostsController < ApplicationController
         end
       end
     end
+  
     if @post.update(post_params)
       redirect_to post_path(@post)
     else
