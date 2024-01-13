@@ -1,87 +1,82 @@
 <div class="container py-5">
-
-  
-      
-
-      <div class="row d-flex justify-content-center">
-        <div class="col-sm-8" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
-          <div class="py-3">
-            <h2>記事投稿</h2>
-            <% if @post.errors.any? %>
-              <div class="alert alert-danger">
-                <strong><%= @post.errors.count %>件のエラーが出たので投稿できませんでした。</strong>
-                <ul>
-                  <% @post.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end%>
-                </ul>
-              </div>
-            <% end %>
-            <%= form_with model: @post, url: '/posts', method: :post do |f| %>
-            <table class="table table-borderless">
-              <tr>
-                <td>タイトル</td>
-                <td><%= f.text_field :title, class: "form-control" %></td>
-              </tr>
-              <tr>
-                <td>カテゴリ</td>
-                <td><%= f.select :category_id, options_from_collection_for_select(@categories, :id, :category_name), { prompt: '--選択して下さい--' }, class: "form-control" %></td>
-              </tr>
-              <tr>
-                <td>タグ</td>
-                <td>
-                  <div class="border d-flex flex-row flex-wrap">
-                    <%= f.collection_check_boxes :tag_ids, @tags, :id, :tag_name do |b| %>
-                      <div class="mx-2 mt-1">
-                        <%= b.check_box %>
-                        <%= b.label %>
-                      </div>
-                    <% end %>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>記事画像</td>
-                <td><%= f.file_field :post_images, multiple: true, class: "form-control-file", accept: 'image/*' %></td>
-              </tr>
-              <tr>
-                <td>説明</td>
-                <td><%= f.text_area :explanation, class: "form-control" %></td>
-              </tr>
-              <!--<tr>-->
-              <!--  <td>記事画像②</td>-->
-              <!--  <td>< %= f.file_field :middle_image, class: "form-control-file", accept: 'image/*' %></td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-              <!--  <td>説明②</td>-->
-              <!--  <td>< %= f.text_area :body_middle, class: "form-control" %></td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-              <!--  <td>記事画像③</td>-->
-              <!--  <td>< %= f.file_field :bottom_image, class: "form-control-file", accept: 'image/*' %></td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-              <!--  <td>説明③</td>-->
-              <!--  <td>< %= f.text_area :body_bottom, class: "form-control" %></td>-->
-              <!--</tr>-->
-              <tr>
-                <td>公開・非公開</td>
-                <td>
-                <%= f.radio_button :is_release, true, checked: true %>
-                <%= f.label :is_release, "公開", value: "true" %>
-  　<!--左に全角スペースあり-->
-                <%= f.radio_button :is_release, false %>
-                <%= f.label :is_release, "非公開", value: "false" %>
-                </td>
-              </tr>
-              </table>
-              <br>
-            <div class="row d-flex justify-content-center">
-              <%= f.submit '投稿', class: "btn btn-success" %>
-            </div>
-            <% end %>
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-8" style="border-radius: 5%; background-color: white; border-radius: 20px; border: 2mm ridge rgba(187, 187, 187, .41);">
+      <div class="py-3">
+        <h2>記事投稿</h2>
+        <% if @post.errors.any? %>
+          <div class="alert alert-danger">
+            <strong><%= @post.errors.count %>件のエラーが出たので投稿できませんでした。</strong>
+            <ul>
+              <% @post.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end%>
+            </ul>
           </div>
+        <% end %>
+        <%= form_with model: @post, url: '/posts', method: :post do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <td>タイトル</td>
+            <td><%= f.text_field :title, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td>カテゴリ</td>
+            <td><%= f.select :category_id, options_from_collection_for_select(@categories, :id, :category_name), { prompt: '--選択して下さい--' }, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td>タグ</td>
+            <td>
+              <div class="border d-flex flex-row flex-wrap">
+                <%= f.collection_check_boxes :tag_ids, @tags, :id, :tag_name do |b| %>
+                  <div class="mx-2 mt-1">
+                    <%= b.check_box %>
+                    <%= b.label %>
+                  </div>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>記事画像</td>
+            <td><%= f.file_field :post_images, multiple: true, class: "form-control-file", accept: 'image/*' %></td>
+          </tr>
+          <tr>
+            <td>説明</td>
+            <td><%= f.text_area :explanation, class: "form-control" %></td>
+          </tr>
+          <!--<tr>-->
+          <!--  <td>記事画像②</td>-->
+          <!--  <td>< %= f.file_field :middle_image, class: "form-control-file", accept: 'image/*' %></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+          <!--  <td>説明②</td>-->
+          <!--  <td>< %= f.text_area :body_middle, class: "form-control" %></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+          <!--  <td>記事画像③</td>-->
+          <!--  <td>< %= f.file_field :bottom_image, class: "form-control-file", accept: 'image/*' %></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+          <!--  <td>説明③</td>-->
+          <!--  <td>< %= f.text_area :body_bottom, class: "form-control" %></td>-->
+          <!--</tr>-->
+          <tr>
+            <td>公開・非公開</td>
+            <td>
+            <%= f.radio_button :is_release, true, checked: true %>
+            <%= f.label :is_release, "公開", value: "true" %>
+　<!--左に全角スペースあり-->
+            <%= f.radio_button :is_release, false %>
+            <%= f.label :is_release, "非公開", value: "false" %>
+            </td>
+          </tr>
+          </table>
+          <br>
+        <div class="row d-flex justify-content-center">
+          <%= f.submit '投稿', class: "btn btn-success" %>
         </div>
+        <% end %>
       </div>
-
+    </div>
+  </div>
 </div>

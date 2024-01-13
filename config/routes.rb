@@ -33,8 +33,6 @@ Rails.application.routes.draw do
       
     end
     resources :relationships, only:[:create, :destroy]
-    resources :tags, only: [:show]
-    resources :categories, only: [:show]
     get 'searches/search', to: 'searches#search', as: 'search'
   end
 

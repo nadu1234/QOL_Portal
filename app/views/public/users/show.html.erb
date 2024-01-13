@@ -41,7 +41,7 @@
           <div class="py-2">
             <div class="card" style="border-color: <%= category_color %>;">
               <div class="card-header" style="background-color: <%= category_color %>;">
-                <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-secondary" %>
+                <%= link_to post.category.category_name, root_path(category: post.category.category_name), class: "btn btn-sm btn-secondary" %>
                 <% if post.user == current_user %>
                   <% if post.is_release? %>
         						<span class="text-active">公開中</span>
@@ -80,7 +80,7 @@
           <div class="py-2">
             <div class="card" style="border-color: <%= category_color %>;">
               <div class="card-header" style="background-color: <%= category_color %>;">
-                <%= link_to post.category.category_name, root_path, class: "btn btn-sm btn-secondary" %>
+                <%= link_to post.category.category_name, root_path(category: post.category.category_name), class: "btn btn-sm btn-secondary" %>
               </div>
               <div class="card-body row align-items-center">
                 <div class="col-sm-3 text-left">

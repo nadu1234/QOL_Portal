@@ -24,25 +24,22 @@
       <% end %>
     </div>
   </div>
-
-
-<br>
-<br>
-<table class='table table-hover table-inverse'>
-  <thead class="thead-light">
-    <tr>
-     <th>カテゴリ</th>
-     <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr class="table-light">
-        <td><%= category.category_name %></td>
-        <td><%= link_to "編集する", edit_admin_category_path(category.id), method: :get, class: 'btn btn-outline-dark' %></td>
+  <br>
+  <br>
+  <table class='table table-hover table-inverse'>
+    <thead class="thead-light">
+      <tr>
+       <th>カテゴリ</th>
+       <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr class="table-light">
+          <td><%= category.category_name %></td>
+          <td><%= link_to "編集する", edit_admin_category_path(category.id), method: :get, class: 'btn btn-outline-dark' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
