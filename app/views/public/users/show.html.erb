@@ -104,9 +104,9 @@
                     コメント数:<%= post.comments.includes(:user).where(user: { is_active: true }).count %>
                   </p>
                 </div>
-                  </div>
-                </div>
               </div>
+            </div>
+          </div>
         <% end %>
       <% end %>
       <div class="item__paginate"><%= paginate @posts %></div>
