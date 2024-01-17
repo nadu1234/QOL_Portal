@@ -14,4 +14,15 @@ $(document).on('turbolinks:load', function() {
   $('.slick01').on('afterChange', function(){
     $('.slick-current').addClass('is--active');
   });
+  $('.slider-image img').click(function(){
+    $("#grayDisplay").html($(this).prop("outerHTML"));
+    //そして、fadeInで表示する。
+    $("#grayDisplay").fadeIn(200);
+    return false;
+  });
+  $("#grayDisplay").click(function () {
+    // 非表示にする
+    $("#grayDisplay").fadeOut(200);
+    return false;
+  });
 });

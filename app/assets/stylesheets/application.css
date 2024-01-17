@@ -43,9 +43,10 @@ body {
 }
 
 .slick-slide img {
-  height: 30vw;
-  max-height: 400px;
-  min-height: 350px;
+  height: 10vw;
+  max-height: 297px;
+  min-height: 210px;
+  margin: 0 0 0 30px;
 }
 
 .slick-slide {
@@ -321,6 +322,31 @@ header {
   border-radius: 20px;
   border: 2mm ridge rgba(187, 187, 187, .41);
   background-image: repeating-linear-gradient(135deg, rgba(189, 189, 189, 0.1) 0px, rgba(189, 189, 189, 0.1) 2px, transparent 2px, transparent 4px), linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
+}
+
+#grayDisplay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100% !important;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+}
+
+#grayDisplay img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  z-index: 3000; /* ヘッダーのz-indexより大きい値に設定（適当な値） */
 }
 
 
@@ -613,5 +639,29 @@ header {
     display: flex;
     flex-direction: column!important;
   }
-
+  .slider .slick-slide.slick-center {
+  transform: scale(1); /* 中央にきたメインスライドが通常サイズに拡大 */
+  opacity: 1; /* スライドの透明度を1に設定し透明じゃなくする */
+  }
+  
+  .slider img {
+    width: 120px;
+    height: 100px;
+  }
+  
+  .slick-slide img {
+    height: 10vw;
+    max-height: 297px;
+    min-height: 90px;
+    margin: 5px 0 0 20px;
+  }
+  
+  .slick-slide {
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+    transform: scale( .50 );
+  }
+  .is--active {
+    transform: scale( 1 );
+  }
 }
