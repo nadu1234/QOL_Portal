@@ -1,5 +1,6 @@
 class Admin::TagsController < ApplicationController
-
+  before_action :is_matching_login_admin
+  
   def index
     @tag = Tag.new
     @tags = Tag.all
@@ -45,6 +46,13 @@ class Admin::TagsController < ApplicationController
 
   def tag_params
     params.require(:tag).permit(:tag_name)
+  end
+
+  def is_matching_login_admin
+    admin = current_admin
+    unless admin && admin.email == "test@email"
+      redirect_to root_path
+    end
   end
 
 end

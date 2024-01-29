@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :is_matching_login_admin
   
   def index
     @category = Category.new
@@ -36,6 +37,13 @@ class Admin::CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:category_name)
+  end
+  
+  def is_matching_login_admin
+    admin = current_admin
+    unless admin && admin.email == "test@email"
+      redirect_to root_path
+    end
   end
   
 end
