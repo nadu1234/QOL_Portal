@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_post_user, only: [:show]
   
   def new
     @post = Post.new
@@ -81,6 +83,22 @@ class Public::PostsController < ApplicationController
   
   def post_params
     params.require(:post).permit(:title, :category_id, :explanation, :is_release, post_images: [], tag_ids: [])
+  end
+  
+  def is_matching_login_user
+    post = Post.find(params[:id])
+    unless post.user.id == current_user.id
+      redirect_to root_path
+    end
+  end
+  
+  def is_matching_post_user
+    post = Post.find(params[:id])
+    if !post.is_release
+      unless post.user.id == current_user.id
+        redirect_to root_path
+      end
+    end
   end
   
 end
