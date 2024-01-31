@@ -1,3 +1,4 @@
+<div class="custom-comment">
 <table class='table table-sm'>
   <tbody>
     <% post.comments.each do |comment| %>
@@ -12,8 +13,11 @@
             <%= comment.comment %>
           </td>
           <td>
+            <%= post.created_at.strftime('%y-%m-%d') %>
+          </td>
+          <td>
             <% if comment.user == current_user %>
-              <%= link_to post_comment_path(comment.post, comment), method: :delete, class: "btn btn-sm btn-danger", remote: true do %>
+              <%= link_to post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "コメントが削除されます。本当によろしいですか？", class: "btn btn-sm btn-danger", remote: true do %>
                 <i class="fa-solid fa-trash-can"></i>
               <% end %>
             <% end %>
@@ -23,3 +27,4 @@
     <% end %>
   </tbody>
 </table>
+</div>

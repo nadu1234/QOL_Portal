@@ -12,7 +12,7 @@
         <% if @post.post_images.attached? %>
           <div class="slider">
             <% @post.post_images.each do |image| %>
-              <%= link_to image_tag(image), image, class: 'slider-image' %>
+              <%= link_to image_tag(image,style:"object-fit: cover"), image, class: 'slider-image' %>
             <% end %>
           </div>
         <% else %>

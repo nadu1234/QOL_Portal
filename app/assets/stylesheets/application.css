@@ -664,4 +664,13 @@ header {
   .is--active {
     transform: scale( 1 );
   }
+  
+  .custom-comment {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    /* 10文字ごとに改行するためのスタイルを追加 */
+    display: block;
+    word-break: break-all;
+  }
 }
