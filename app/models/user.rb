@@ -54,7 +54,7 @@ class User < ApplicationRecord
   end
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : '人物のアイコン素材 その3.png'
+    profile_image.attached? ? profile_image.variant(resize: "50x50") : '人物のアイコン素材 その3.png'
   end
 
 end

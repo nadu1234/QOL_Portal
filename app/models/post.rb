@@ -62,7 +62,7 @@ class Post < ApplicationRecord
 
   def get_post_image
     if post_images.attached? && post_images.first.present?
-      post_images.first
+      post_images.first.variant(resize: "140x100!")
     else
       'no_image_yoko.jpg'
     end
