@@ -16,12 +16,12 @@
           <h2><%= link_to post.title, post_path(post.id) %></h2>
           <p><strong>投稿日時:</strong> <%= post.created_at.strftime('%Y-%m-%d') %></p>
         </div>
-        <div class="col-sm-1 text-center">
+        <div class="col-sm-1 text-center frontindex">
           <%= link_to post_path(post.id) do %>
             <%= image_tag post.get_post_image, size: '140x100', style: 'object-fit: cover; border-radius: 5%; overflow: hidden; background-color: white; margin-right: px;' %>
           <% end %>
         </div>
-        <div class="col-sm text-right">
+        <div class="col-sm text-right backindex">
           <p class="badge badge-light">
             <% post.tags.each do |t| %>
               <%= link_to "##{t.tag_name}", root_path(tags: t.tag_name) %>
