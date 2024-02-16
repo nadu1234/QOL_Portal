@@ -18,7 +18,7 @@
         </div>
         <div class="col-sm-1 text-center frontindex">
           <%= link_to post_path(post.id) do %>
-            <%= image_tag post.get_post_image, size: '140x100', style: 'object-fit: cover; border-radius: 5%; overflow: hidden; background-color: white; margin-right: px;' %>
+            <%= image_tag post.get_post_image, size: '140x100', style: 'object-fit: cover; border-radius: 5%; overflow: hidden; background-color: white; margin-right: px;', class: 'lazy' %>
           <% end %>
         </div>
         <div class="col-sm text-right backindex">
@@ -38,3 +38,17 @@
     </div>
   </div>
 <% end %>
+
+
+<!-- LazyLoad library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.1.1/lazyload.min.js"></script>
+
+<!-- Initialize LazyLoad -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var lazyLoadInstance = new LazyLoad({
+      elements_selector: ".lazy"
+      // 他のオプションも設定可能
+    });
+  });
+</script>
