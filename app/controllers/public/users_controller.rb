@@ -22,13 +22,12 @@ class Public::UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if @user.email == "guest@example.com"
       flash[:notice] = "ゲストユーザーは退会できません。"
-      redirect_to root_path
     else
       @user.update(is_active: false)
       reset_session
       flash[:notice] = "退会されました。"
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   def favorite
