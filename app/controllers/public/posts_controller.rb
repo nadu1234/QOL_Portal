@@ -1,11 +1,10 @@
 class Public::PostsController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   before_action :is_matching_post_user, only: [:show]
+  before_action :set_categories_and_tags, only: [:new, :edit]
   
   def new
     @post = Post.new
-    @categories = Category.all
-    @tags = Tag.all
   end
   
   def show
@@ -19,8 +18,6 @@ class Public::PostsController < ApplicationController
   
   def edit
     @post = Post.find(params[:id])
-    @categories = Category.all
-    @tags = Tag.all
   end
   
   def create
@@ -99,6 +96,11 @@ class Public::PostsController < ApplicationController
         redirect_to root_path
       end
     end
+  end
+  
+  def set_categories_and_tags
+    @categories = Category.all
+    @tags = Tag.all
   end
   
 end
