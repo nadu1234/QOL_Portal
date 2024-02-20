@@ -74,15 +74,4 @@ class Post < ApplicationRecord
     end
   end
 
-  # def validate_images
-  #   return unless post_images.attached?
-
-  #   post_images.each do |image|
-  #     result = Vision.images_analysis(image)
-  #     if result == false
-  #       errors.add(:base, "不適切な画像が検出されました。適切な画像をアップロードしてください。")
-  #     end
-  #   end
-  # end
-
 end

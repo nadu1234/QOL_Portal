@@ -206,6 +206,7 @@ header {
   padding: 0.3em;
   font-size: 20pt;
   font-weight: bold;
+  text-shadow:2px 1px 4px rgb(149 149 149)
 }
 
 /* 自分で指定したdivタグ */
@@ -276,11 +277,13 @@ header {
   font-size: 60px; /* 適切なフォントサイズに設定 */
   font-family: 'Garamond';
   font-weight: bold;
+  text-shadow:2px 1px 4px rgb(149 149 149)
 }
 
 .about_text {
   font-size: 20px;
   font-family: 'SimSun';
+  text-shadow:2px 1px 4px rgb(149 149 149)
 }
 
 .post  {
@@ -322,6 +325,7 @@ header {
   border-radius: 20px;
   border: 2mm ridge rgba(187, 187, 187, .41);
   background-image: repeating-linear-gradient(135deg, rgba(189, 189, 189, 0.1) 0px, rgba(189, 189, 189, 0.1) 2px, transparent 2px, transparent 4px), linear-gradient(90deg, rgb(255, 255, 255), rgb(255, 255, 255));
+  text-shadow:2px 1px 4px rgb(149 149 149)
 }
 
 #grayDisplay {

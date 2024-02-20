@@ -13,7 +13,7 @@
       </div>
       <div class="card-body row align-items-center">
         <div class="col-sm-3 text-left">
-          <h2><%= link_to post.title, post_path(post.id) %></h2>
+          <h2><%= link_to post.title, post_path(post.id), style: 'text-shadow:2px 1px 5px rgb(183 162 235)' %></h2>
           <p><strong>投稿日時:</strong> <%= post.created_at.strftime('%Y-%m-%d') %></p>
         </div>
         <div class="col-sm-1 text-center frontindex">
