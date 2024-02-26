@@ -1,43 +1,80 @@
 <% extend Public::PostsHelper %>
 
-<% posts.each do |post| %>
-<% category_color = determine_category_color(post.category.category_name) %>
-  <div class="col-sm-10 py-1">
-    <div class="card" style="border-color: <%= category_color %>;">
-      <div class="card-header" style="background-color: <%= category_color %>;">
-        <%= link_to post.category.category_name, root_path(category: post.category.category_name), class: "btn btn-sm btn-secondary" %>
-        <%= link_to user_path(post.user.id) do %>
-          <%= image_tag post.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9; background-color: white;' %>
-          <span style="color: black;"><%= post.user.name %></span>
-        <% end %>
-      </div>
-      <div class="card-body row align-items-center">
-        <div class="col-sm-3 text-left">
-          <h2><%= link_to post.title, post_path(post.id), style: 'text-shadow:2px 1px 5px rgb(183 162 235)' %></h2>
-          <p><strong>投稿日時:</strong> <%= post.created_at.strftime('%Y-%m-%d') %></p>
-        </div>
-        <div class="col-sm-1 text-center frontindex">
-          <%= link_to post_path(post.id) do %>
-            <%= image_tag post.get_post_image, size: '140x100', style: 'object-fit: cover; border-radius: 5%; overflow: hidden; background-color: white; margin-right: px;', class: 'lazy' %>
-          <% end %>
-        </div>
-        <div class="col-sm text-right backindex">
-          <p class="badge badge-light">
-            <% post.tags.each do |t| %>
-              <%= link_to "##{t.tag_name}", root_path(tags: t.tag_name) %>
+<div id="posts-container" class="row">
+  <% posts.each_slice(2) do |slice| %>
+    <div class="col-sm-6">
+      <% slice.each do |post| %>
+        <% category_color = determine_category_color(post.category.category_name) %>
+        <div class="card mb-3" style="border-color: <%= category_color %>;">
+          <div class="card-header" style="background-color: <%= category_color %>;">
+            <%= link_to post.category.category_name, root_path(category: post.category.category_name), class: "btn btn-sm btn-secondary" %>
+            <%= link_to user_path(post.user.id) do %>
+              <%= image_tag post.user.get_profile_image, size:'50x50', style: 'border-radius: 50%; overflow: hidden; margin-right: 10px; border: 1px solid #a9a9a9; background-color: white;' %>
+              <span style="color: black;"><%= post.user.name %></span>
             <% end %>
-          </p>
-          <p class="badge badge-primary">
-            いいね数:<%= post.favorites.count %>
-          </p>
-          <p class="badge badge-primary">
-          コメント数:<%= post.comments.includes(:user).where(user: { is_active: true }).count %>
-          </p>
+          </div>
+          <div class="card-body row align-items-center">
+            <div class="col-sm-3 text-left">
+              <h2><%= link_to post.title, post_path(post.id), style: 'text-shadow:2px 1px 5px rgb(183 162 235)' %></h2>
+              <p><strong>投稿日時:</strong> <%= post.created_at.strftime('%Y-%m-%d') %></p>
+            </div>
+            <div class="col-sm-4 text-center">
+              <%= link_to post_path(post.id) do %>
+                <%= image_tag post.get_post_image, size: '140x100', style: 'object-fit: cover; border-radius: 5%; overflow: hidden; background-color: white; margin-right: px;', class: 'lazy' %>
+              <% end %>
+            </div>
+            <div class="col-sm-5 text-right">
+              <p class="badge badge-light">
+                <% post.tags.each do |t| %>
+                  <%= link_to "##{t.tag_name}", root_path(tags: t.tag_name) %>
+                <% end %>
+              </p>
+              <p class="badge badge-primary">
+                いいね数:<%= post.favorites.count %>
+              </p>
+              <p class="badge badge-primary">
+                コメント数:<%= post.comments.includes(:user).where(user: { is_active: true }).count %>
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
+<button id="toggle-view-button" class="btn btn-primary">2列表示に切り替える</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const postsContainer = document.getElementById('posts-container');
+    const toggleViewButton = document.getElementById('toggle-view-button');
+    
+    toggleViewButton.addEventListener('click', function() {
+      postsContainer.classList.toggle('col-sm-6');
+      postsContainer.classList.toggle('col-sm-10');
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.classList.toggle('mb-3');
+        card.classList.toggle('mb-0');
+      });
+    });
+  });
+</script>
+
+
+<!-- LazyLoad library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.1.1/lazyload.min.js"></script>
+
+<!-- Initialize LazyLoad -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var lazyLoadInstance = new LazyLoad({
+      elements_selector: ".lazy"
+      // 他のオプションも設定可能
+    });
+  });
+</script>
 
 
 <!-- LazyLoad library -->
